@@ -18,7 +18,7 @@
         <nav class="nav">
             <ul class="nav__list">
                 <li class="nav__item nav__item--dropdown">
-                    <button class="nav__link nav__link--dropdown" id="catalogToggle">Каталог ▼</button>
+                    <a href="#" class="nav__link" id="catalogLink">Каталог ▼</a>
                     <ul class="dropdown" id="catalogDropdown">
                         <li><a href="catalog.html?category=wine">Вино</a></li>
                         <li><a href="catalog.html?category=champagne">Шампанское и игристое</a></li>
@@ -302,40 +302,32 @@
 
     <!-- Для отладки добавьте эту кнопку (временно) -->
     <!-- <button onclick="localStorage.removeItem('ageConfirmed'); location.reload();" style="position:fixed; bottom:10px; left:10px; z-index:10000;">Сбросить проверку возраста</button> -->
+    
 <script>
     // Выпадающее меню "Каталог"
     document.addEventListener('DOMContentLoaded', function() {
-        const catalogToggle = document.getElementById('catalogToggle');
+        const catalogLink = document.getElementById('catalogLink');
         const catalogDropdown = document.getElementById('catalogDropdown');
         
-        if (catalogToggle && catalogDropdown) {
-            // Обработка клика по кнопке "Каталог"
-            catalogToggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
+        if (catalogLink && catalogDropdown) {
+            // При клике на "Каталог"
+            catalogLink.addEventListener('click', function(e) {
+                e.preventDefault(); // Не переходить по ссылке
                 
-                // Просто переключаем класс show
-                catalogDropdown.classList.toggle('show');
+                // Если меню открыто - закрыть, если закрыто - открыть
+                if (catalogDropdown.style.display === 'block') {
+                    catalogDropdown.style.display = 'none';
+                } else {
+                    catalogDropdown.style.display = 'block';
+                }
             });
             
-            // Закрытие при клике в любое место
+            // При клике в любом месте страницы
             document.addEventListener('click', function(e) {
-                // Если клик был не по кнопке и не по меню
-                if (!catalogToggle.contains(e.target) && !catalogDropdown.contains(e.target)) {
-                    catalogDropdown.classList.remove('show');
+                // Если кликнули не по ссылке "Каталог" и не по меню
+                if (e.target !== catalogLink && !catalogDropdown.contains(e.target)) {
+                    catalogDropdown.style.display = 'none';
                 }
-            });
-            
-            // Закрытие по ESC
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && catalogDropdown.classList.contains('show')) {
-                    catalogDropdown.classList.remove('show');
-                }
-            });
-            
-            // Чтобы клик по самому меню не закрывал его
-            catalogDropdown.addEventListener('click', function(e) {
-                e.stopPropagation();
             });
         }
     });
