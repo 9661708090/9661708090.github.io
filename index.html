@@ -248,19 +248,12 @@
 
 
         window.addEventListener('DOMContentLoaded', function() {
-            const ageVerified = localStorage.getItem('ageVerified');
-            if (ageVerified) {
-                try {
-                    const data = JSON.parse(ageVerified);
-                    const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
-                    if (new Date(data.date) > thirtyDaysAgo) {
-                        document.getElementById('ageGate').classList.add('hidden');
-                        document.getElementById('mainContent').classList.add('show');
-                        return;
-                    }
-                } catch(e) {}
-            }
-        });
+    if (localStorage.getItem('ageVerified') === 'true') {
+        document.getElementById('ageGate').style.display = 'none';
+        document.getElementById('mainContent').style.opacity = '1';
+    }
+});
+
 
         // Поиск
         function searchProducts() {
