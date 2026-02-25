@@ -17,10 +17,20 @@
     display: flex;
     align-items: center;
     gap: 4px;
+    outline: none; /* Убирает обводку при фокусе */
+    -webkit-tap-highlight-color: transparent; /* Убирает выделение на мобильных */
 }
 
 .nav__link--dropdown:hover {
     color: var(--color-accent-wine);
+}
+
+.nav__link--dropdown:focus {
+    outline: none; /* Убирает обводку при фокусе */
+}
+
+.nav__link--dropdown::-moz-focus-inner {
+    border: 0; /* Убирает пунктирную рамку в Firefox */
 }
 
 .dropdown {
@@ -32,13 +42,13 @@
     border-radius: 4px;
     padding: 10px 0;
     min-width: 220px;
-    display: none; /* По умолчанию скрыто */
+    display: none;
     z-index: 1000;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .dropdown.show {
-    display: block; /* Показываем при клике */
+    display: block;
 }
 
 .dropdown li {
