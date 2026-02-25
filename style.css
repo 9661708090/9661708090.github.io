@@ -1,3 +1,69 @@
+/* ===== ВЫПАДАЮЩЕЕ МЕНЮ ===== */
+.nav__item--dropdown {
+    position: relative;
+}
+
+.nav__link--dropdown {
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-text);
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.nav__link--dropdown:hover {
+    color: var(--color-accent-wine);
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 10px 0;
+    min-width: 220px;
+    display: none; /* По умолчанию скрыто */
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.dropdown.show {
+    display: block; /* Показываем при клике */
+}
+
+.dropdown li {
+    list-style: none;
+}
+
+.dropdown a {
+    display: block;
+    padding: 8px 20px;
+    text-decoration: none;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+
+.dropdown a:hover {
+    background: var(--color-bg-light);
+    color: var(--color-accent-wine);
+}
+
+.dropdown .sale-link {
+    color: var(--color-accent-wine);
+    font-weight: 500;
+}
+
 /* ===== ПРОВЕРКА ВОЗРАСТА ===== */
 .age-verification {
     position: fixed;
