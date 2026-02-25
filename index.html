@@ -302,31 +302,38 @@
 
     <!-- Для отладки добавьте эту кнопку (временно) -->
     <!-- <button onclick="localStorage.removeItem('ageConfirmed'); location.reload();" style="position:fixed; bottom:10px; left:10px; z-index:10000;">Сбросить проверку возраста</button> -->
-    <script>
+<script>
     // Выпадающее меню "Каталог"
     document.addEventListener('DOMContentLoaded', function() {
         const catalogToggle = document.getElementById('catalogToggle');
         const catalogDropdown = document.getElementById('catalogDropdown');
         
         if (catalogToggle && catalogDropdown) {
+            // Обработка клика по кнопке "Каталог"
             catalogToggle.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
+                
+                // Просто переключаем класс show
                 catalogDropdown.classList.toggle('show');
             });
             
+            // Закрытие при клике в любое место
             document.addEventListener('click', function(e) {
+                // Если клик был не по кнопке и не по меню
                 if (!catalogToggle.contains(e.target) && !catalogDropdown.contains(e.target)) {
                     catalogDropdown.classList.remove('show');
                 }
             });
             
+            // Закрытие по ESC
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && catalogDropdown.classList.contains('show')) {
                     catalogDropdown.classList.remove('show');
                 }
             });
             
+            // Чтобы клик по самому меню не закрывал его
             catalogDropdown.addEventListener('click', function(e) {
                 e.stopPropagation();
             });
