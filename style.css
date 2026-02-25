@@ -600,25 +600,26 @@ body {
 }
 
 .featured-banner .container {
-    max-width: 1280px;
+    max-width: 1220px; /* Уменьшил с 1280px до 1220px */
     margin: 0 auto;
-    padding: 0 30px;
+    padding: 0 20px; /* Уменьшил отступы */
 }
 
 .featured-banner__container {
     background: linear-gradient(135deg, #1A1F2E 0%, #2a2f40 100%);
     color: white;
-    padding: 70px 60px; /* Увеличена высота (было 60px, стало 70px — примерно +15%) */
+    padding: 70px 50px; /* Уменьшил горизонтальные отступы */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: 25px; /* Плавные скругленные углы */
+    border-radius: 25px;
     width: 100%;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Легкая тень для глубины */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
 .featured-banner__content {
-    max-width: 500px;
+    max-width: 100%; /* Растягиваем на всю ширину */
+    width: 100%;
 }
 
 .featured-banner__label {
@@ -648,11 +649,11 @@ body {
     background: transparent;
     border: 1.5px solid rgba(255, 255, 255, 0.4);
     color: white;
-    padding: 14px 35px; /* Чуть крупнее кнопка */
+    padding: 14px 35px;
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    border-radius: 8px; /* Скругление кнопки */
+    border-radius: 8px;
     letter-spacing: 0.5px;
     font-weight: 500;
 }
@@ -665,17 +666,7 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.featured-banner__image {
-    width: 200px;
-    height: 200px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px dashed rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(5px);
-}
+/* Удалил весь блок .featured-banner__image */
 
 /* Адаптивность */
 @media screen and (max-width: 992px) {
@@ -683,20 +674,19 @@ body {
         flex-direction: column;
         text-align: center;
         gap: 40px;
-        padding: 60px 40px; /* Сохраняем пропорции на планшетах */
+        padding: 60px 40px;
     }
     
     .featured-banner__title {
         font-size: 2.2rem;
     }
-    
-    .featured-banner__image {
-        width: 180px;
-        height: 180px;
-    }
 }
 
 @media screen and (max-width: 768px) {
+    .featured-banner .container {
+        padding: 0 15px; /* Еще меньше отступы на мобильных */
+    }
+    
     .featured-banner__container {
         padding: 50px 30px;
         border-radius: 20px;
@@ -720,12 +710,8 @@ body {
     .featured-banner__btn {
         width: 100%;
     }
-    
-    .featured-banner__image {
-        width: 150px;
-        height: 150px;
-    }
 }
+
 /* ===== ФУТЕР ===== */
 .footer {
     background-color: var(--color-bg-light);
