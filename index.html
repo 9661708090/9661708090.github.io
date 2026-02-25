@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Винотека Premium - Только для взрослых</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Georgia', serif; 
+            background: #1a0f0f; 
+            color: #f0e6d2; 
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Возрастное окно */
+        .age-gate {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            background: linear-gradient(135deg, #2d1810 0%, #1a0f0f 100%);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 40px 20px; z-index: 10000;
+            backdrop-filter: blur(5px);
+        }
+        .age-gate.hidden { display: none; }
+        .age-gate-logo { font-size: clamp(2em, 8vw, 3.5em); color: #d4a574; margin-bottom: 30px; }
+        .age-gate h2 { font-size: clamp(1.5em, 6vw, 2.5em); margin-bottom: 20px; }
+        .age-gate p { font-size: clamp(1em, 4vw, 1.2em); max-width: 600px; margin-bottom: 40px; opacity: 0.9; }
+        .age-buttons { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+        .age-btn { 
+            padding: clamp(12px, 4vw, 18px) clamp(30px, 8vw, 50px); 
+            border: 2px solid #d4a574; 
+            background: transparent; 
+            color: #f0e6d2; 
+            font-family: inherit; 
+            font-size: clamp(1em, 3vw, 1.1em); 
+            border-radius: 50px; 
+            cursor: pointer; 
+            transition: all 0.3s ease;
+            min-width: 200px;
+        }
+        .age-btn:hover { background: #d4a574; color: #1a0f0f; transform: scale(1.05); }
+        .age-btn.deny { border-color: #8b0000; color: #f0e6d2; }
+        .age-btn.deny:hover { background: #8b0000; }
+
+        /* Основной контент */
+        .main-content { opacity: 0; transition: opacity 0.5s ease; }
+        .main-content.show { opacity: 1; }
+
+        /* Header */
+        header { 
+            background: #2d1810; 
+            padding: 15px 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            position: sticky; top: 0; z-index: 100;
+        }
+        .logo { font-size: clamp(1.2em, 4vw, 1.8em); font-weight: bold; color: #d4a574; }
+        .nav-toggle { display: none; flex-direction: column; cursor: pointer; gap: 4px; }
+        .nav-toggle span { width: 25px; height: 3px; background: #f0e6d2; transition: 0.3s; }
+        nav ul { list-style: none; display: flex; gap: clamp(15px, 3vw, 30px); margin: 0; padding: 0; }
+        nav a { color: #f0e6d2; text-decoration: none; font-size: clamp(0.9em, 2.5vw, 1.1em); }
+        nav a:hover { color: #d4a574; }
+
+        /* Hero */
+        .hero { 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://via.placeholder.com/1920x800/2d1810/f0e6d2?text=Премиум+Вина+Испании+Италии') center/cover; 
+            height: clamp(400px, 50vw, 600px); 
+            display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 0 20px;
+        }
+        .hero h1 { font-size: clamp(1.8em, 8vw, 3.5em); margin-bottom: 20px; text-shadow: 2px 2px 8px rgba(0,0,0,0.9); }
+        .hero p { font-size: clamp(1em, 4vw, 1.5em); max-width: 90%; margin: 0 auto; }
+
+        /* Warning */
+        .warning { background: #3d2b1f; padding: clamp(15px, 5vw, 25px); text-align: center; font-size: clamp(0.8em, 3vw, 0.95em); }
+
+        /* Catalog */
+        .catalog { max-width: 1400px; margin: clamp(40px, 10vw, 80px) auto; padding: 0 20px; }
+        .catalog h2 { text-align: center; font-size: clamp(1.8em, 6vw, 2.8em); margin-bottom: clamp(30px, 8vw, 60px); }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 45vw, 320px), 1fr)); gap: clamp(20px, 5vw, 40px); }
+        .product { background: #2d1810; padding: clamp(20px, 6vw, 35px); border-radius: 12px; text-align: center; transition: all 0.3s ease; }
+        .product:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(212, 165, 116, 0.3); }
+        .product img { width: 100%; height: clamp(220px, 35vw, 320px); object-fit: cover; border-radius: 8px; margin-bottom: 15px; }
+        .product h3 { font-size: clamp(1.1em, 4vw, 1.5em); margin: 15px 0 10px; }
+        .product p { font-size: 0.95em; opacity: 0.9; margin-bottom: 15px; }
+        .price { font-size: clamp(1.4em, 5vw, 2em); color: #d4a574; font-weight: bold; }
+
+        /* Footer */
+        footer { background: #1a0f0f; padding: clamp(30px, 8vw, 50px) 20px; text-align: center; border-top: 1px solid #3d2b1f; font-size: clamp(0.85em, 2.5vw, 0.95em); }
+        footer p { margin-bottom: 10px; }
+        footer a { color: #d4a574; text-decoration: none; }
+
+        /* Мобильное меню */
+        @media (max-width: 768px) {
+            .nav-toggle { display: flex; }
+            nav ul { 
+                position: fixed; top: 70px; left: 0; width: 100%; 
+                background: #2d1810; flex-direction: column; padding: 30px 20px; 
+                transform: translateY(-100%); opacity: 0; transition: all 0.3s ease; 
+            }
+            nav ul.active { transform: translateY(0); opacity: 1; }
+            .age-buttons { flex-direction: column; gap: 15px; }
+            .age-btn { width: 100%; max-width: 300px; }
+        }
+
+        /* Планшет */
+        @media (max-width: 1024px) {
+            .products-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Возрастная проверка -->
+    <div class="age-gate" id="ageGate">
+        <div class="age-gate-logo">🍷</div>
+        <h2>Данный сайт содержит информацию<br>об алкогольной продукции</h2>
+        <p>В соответствии с Федеральным законом № 171-ФЗ,<br>знакомить с такой информацией могут только лица старше 18 лет.</p>
+        <div class="age-buttons">
+            <button class="age-btn" onclick="confirmAge(true)">Мне исполнилось 18 лет</button>
+            <button class="age-btn deny" onclick="confirmAge(false)">Мне нет 18 лет</button>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div class="main-content" id="mainContent">
+        <header>
+            <div class="logo">Винотека Premium</div>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#catalog">Каталог</a></li>
+                    <li><a href="#brands">Бренды</a></li>
+                    <li><a href="#restaurants">Рестораны</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="nav-toggle" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+        </header>
+
+        <section class="hero">
+            <h1>Премиальные вина<br>Испании, Италии и Португалии</h1>
+            <p>Более 1000 позиций в наших винотеках Москвы.<br>Дегустации и рестораны премиум-класса.</p>
+        </section>
+
+        <div class="warning">
+            Продажа алкоголя только в магазинах Москвы (ФЗ-171). Возраст 18+. Лицензия №77РПА0001234
+        </div>
+
+        <section class="catalog" id="catalog">
+            <h2>Рекомендуем к дегустации</h2>
+            <div class="products-grid">
+                <div class="product">
+                    <img src="https://via.placeholder.com/300x320/2d1810/f0e6d2?text=Chianti+Classico" alt="Chianti">
+                    <h3>Chianti Classico Riserva</h3>
+                    <p>Италия, Тоскана. 24 мес. дуб. Вишня, специи, земля.</p>
+                    <div class="price">2 500 ₽</div>
+                </div>
+                <div class="product">
+                    <img src="https://via.placeholder.com/300x320/2d1810/f0e6d2?text=Rioja+Reserva" alt="Rioja">
+                    <h3>Tempranillo Rioja Reserva</h3>
+                    <p>Испания, Риоха. Ваниль, чернослив, шелковистое послевкусие.</p>
+                    <div class="price">3 200 ₽</div>
+                </div>
+                <div class="product">
+                    <img src="https://via.placeholder.com/300x320/2d1810/f0e6d2?text=Porto+Vintage" alt="Porto">
+                    <h3>Porto Vintage 2018</h3>
+                    <p>Португалия. Крепленое. Для коллекции и медитации.</p>
+                    <div class="price">4 800 ₽</div>
+                </div>
+                <div class="product">
+                    <img src="https://via.placeholder.com/300x320/2d1810/f0e6d2?text=Prosecco+DOCG" alt="Prosecco">
+                    <h3>Prosecco Superiore DOCG</h3>
+                    <p>Италия, Венето. Игристое. Цитрус, персик, свежесть.</p>
+                    <div class="price">1 900 ₽</div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 Винотека Premium. Москва | +7 (495) 123-45-67 | info@vinoteka.ru</p>
+            <p>Винотеки: Куркино, Зюзино, Мансuroвский | <a href="#">Политика конфиденциальности</a></p>
+        </footer>
+    </div>
+
+    <script>
+        // Проверка возраста
+        function confirmAge(isAdult) {
+            if (isAdult) {
+                localStorage.setItem('ageVerified', JSON.stringify({
+                    confirmed: true,
+                    date: new Date().toISOString()
+                }));
+                document.getElementById('ageGate').classList.add('hidden');
+                document.getElementById('mainContent').classList.add('show');
+            } else {
+                window.location.href = 'https://www.google.ru/search?q=безалкогольные+напитки';
+            }
+        }
+
+        // Проверка при загрузке
+        window.addEventListener('DOMContentLoaded', function() {
+            const ageVerified = localStorage.getItem('ageVerified');
+            if (ageVerified) {
+                try {
+                    const data = JSON.parse(ageVerified);
+                    const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+                    if (new Date(data.date) > thirtyDaysAgo) {
+                        document.getElementById('ageGate').classList.add('hidden');
+                        document.getElementById('mainContent').classList.add('show');
+                        return;
+                    }
+                } catch(e) {}
+            }
+        });
+
+        // Мобильное меню
+        function toggleMenu() {
+            document.getElementById('nav-menu').classList.toggle('active');
+        }
+
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('nav-menu').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
