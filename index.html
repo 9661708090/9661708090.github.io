@@ -38,7 +38,7 @@
             </ul>
         </nav>
 
-        <!-- Поле поиска (всегда видимое) -->
+        <!-- Поле поиска -->
         <div class="search-box">
             <input type="text" class="search-box__input" placeholder="Поиск по каталогу...">
             <button class="search-box__btn">
@@ -110,7 +110,7 @@
                         <button class="product-card__btn">В корзину</button>
                     </div>
 
-                    <!-- Карточка 4 (Виски) -->
+                    <!-- Карточка 4 -->
                     <div class="product-card">
                         <div class="product-card__sku">Артикул 002145</div>
                         <h3 class="product-card__title">GLENMORANGIE ORIGINAL</h3>
@@ -145,7 +145,6 @@
                         <button class="product-card__btn">В корзину</button>
                     </div>
 
-                    <!-- Карточка со скидкой -->
                     <div class="product-card product-card--sale">
                         <span class="product-card__badge">-10%</span>
                         <div class="product-card__sku">Артикул 003457</div>
@@ -231,55 +230,77 @@
     </div>
 
     <script>
-        // Проверка возраста
-        document.addEventListener('DOMContentLoaded', function() {
-            const ageVerification = document.getElementById('ageVerification');
-            const ageYes = document.getElementById('ageYes');
-            const ageNo = document.getElementById('ageNo');
-            
-            // Проверяем, подтверждал ли пользователь возраст ранее
-            const ageConfirmed = localStorage.getItem('ageConfirmed');
-            
-            if (ageConfirmed === 'true') {
-                // Если уже подтверждал - скрываем окно
-                ageVerification.classList.add('hidden');
-            } else {
-                // Блокируем прокрутку страницы
-                document.body.style.overflow = 'hidden';
-            }
-            
-            // Обработка кнопки "Да"
-            if (ageYes) {
-                ageYes.addEventListener('click', function() {
+        // Проверка возраста - ИСПРАВЛЕННАЯ ВЕРСИЯ
+        (function() {
+            // Ждем полной загрузки DOM
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('Скрипт загружен');
+                
+                const ageVerification = document.getElementById('ageVerification');
+                const ageYes = document.getElementById('ageYes');
+                const ageNo = document.getElementById('ageNo');
+                
+                console.log('ageVerification найден:', !!ageVerification);
+                console.log('ageYes найден:', !!ageYes);
+                console.log('ageNo найден:', !!ageNo);
+                
+                if (!ageVerification || !ageYes || !ageNo) {
+                    console.error('Элементы не найдены!');
+                    return;
+                }
+                
+                // Проверяем, подтверждал ли пользователь возраст ранее
+                const ageConfirmed = localStorage.getItem('ageConfirmed');
+                console.log('ageConfirmed из localStorage:', ageConfirmed);
+                
+                if (ageConfirmed === 'true') {
+                    // Если уже подтверждал - скрываем окно
+                    console.log('Возраст уже подтвержден, скрываем окно');
+                    ageVerification.classList.add('hidden');
+                    document.body.style.overflow = '';
+                } else {
+                    // Показываем окно и блокируем прокрутку
+                    console.log('Показываем окно проверки возраста');
+                    ageVerification.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                }
+                
+                // Обработка кнопки "Да"
+                ageYes.addEventListener('click', function(e) {
+                    console.log('Кнопка ДА нажата');
+                    e.preventDefault();
                     localStorage.setItem('ageConfirmed', 'true');
                     ageVerification.classList.add('hidden');
                     document.body.style.overflow = '';
                 });
-            }
-            
-            // Обработка кнопки "Нет"
-            if (ageNo) {
-                ageNo.addEventListener('click', function() {
+                
+                // Обработка кнопки "Нет"
+                ageNo.addEventListener('click', function(e) {
+                    console.log('Кнопка НЕТ нажата');
+                    e.preventDefault();
                     window.location.href = 'https://www.google.com';
                 });
-            }
-            
-            // Блокируем закрытие по ESC
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && !ageVerification.classList.contains('hidden')) {
-                    e.preventDefault();
+                
+                // Блокируем закрытие по ESC
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && !ageVerification.classList.contains('hidden')) {
+                        e.preventDefault();
+                    }
+                });
+                
+                // Блокируем клик по overlay
+                const overlay = document.querySelector('.age-verification__overlay');
+                if (overlay) {
+                    overlay.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    });
                 }
             });
-            
-            // Блокируем клик по overlay
-            const overlay = document.querySelector('.age-verification__overlay');
-            if (overlay) {
-                overlay.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                });
-            }
-        });
+        })();
     </script>
+
+    <!-- Для отладки добавьте эту кнопку (временно) -->
+    <!-- <button onclick="localStorage.removeItem('ageConfirmed'); location.reload();" style="position:fixed; bottom:10px; left:10px; z-index:10000;">Сбросить проверку возраста</button> -->
 </body>
 </html>
