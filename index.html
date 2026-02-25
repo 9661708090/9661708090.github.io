@@ -5,108 +5,313 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wine&Whisky - Премиальная винотека</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
-            font-family: 'Inter', sans-serif; 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
             background: #FAFAFA; 
             color: #1A1A1A; 
             line-height: 1.6;
+            min-height: 100vh;
         }
 
         /* Возрастное окно */
         .age-gate {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
             background: linear-gradient(135deg, #f8f9fa, #e9ecef);
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             text-align: center; padding: 40px 20px; z-index: 10000;
         }
-        .age-gate.hidden { display: none !important; }
+        .age-gate.hidden { display: none; }
         .age-gate-logo { font-size: clamp(3em, 12vw, 5em); color: #00C4B4; margin-bottom: 30px; }
         .age-gate h2 { font-size: clamp(1.8em, 7vw, 3em); margin-bottom: 20px; color: #1A1A1A; font-weight: 600; }
         .age-gate p { font-size: clamp(1.1em, 4.5vw, 1.3em); max-width: 600px; margin-bottom: 40px; color: #666; }
         .age-buttons { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
         .age-btn { 
-            padding: 16px 32px; border: 2px solid #00C4B4; background: white; color: #00C4B4; 
-            font-weight: 500; border-radius: 12px; cursor: pointer; transition: all 0.3s ease;
+            padding: 16px 32px; 
+            border: 2px solid #00C4B4; 
+            background: white; 
+            color: #00C4B4; 
+            font-family: inherit; 
+            font-size: 1.1em; 
+            font-weight: 500;
+            border-radius: 12px; 
+            cursor: pointer; 
+            transition: all 0.3s ease;
             min-width: 200px;
         }
         .age-btn:hover { background: #00C4B4; color: white; transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,196,180,0.3); }
         .age-btn.deny { border-color: #DEE2E6; color: #666; }
         .age-btn.deny:hover { background: #DEE2E6; color: #1A1A1A; }
 
+        /* Основной контент */
         .main-content { opacity: 0; transition: opacity 0.5s ease; }
-        .main-content.show { opacity: 1 !important; }
+        .main-content.show { opacity: 1; }
 
         /* Header */
         header { 
-            background: white; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;
-            position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            background: white; 
+            padding: 20px 40px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            position: sticky; top: 0; z-index: 100;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
         }
         .logo { 
-            font-size: clamp(1.5em, 5vw, 2.2em); font-weight: 700; color: #1A1A1A; 
-            background: linear-gradient(135deg, #00C4B4, #FF6B35); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            font-size: clamp(1.5em, 5vw, 2.2em); 
+            font-weight: 700; 
+            color: #1A1A1A;
+            letter-spacing: -0.5px;
         }
         .nav-toggle { display: none; flex-direction: column; cursor: pointer; gap: 4px; }
         .nav-toggle span { width: 25px; height: 3px; background: #1A1A1A; border-radius: 2px; transition: 0.3s; }
-        nav ul { list-style: none; display: flex; gap: 30px; }
-        nav a { color: #666; text-decoration: none; font-weight: 500; padding: 10px 0; position: relative; transition: all 0.3s; }
+        nav ul { list-style: none; display: flex; gap: 30px; margin: 0; padding: 0; }
+        nav a { color: #666; text-decoration: none; font-size: 1em; font-weight: 500; padding: 10px 0; position: relative; transition: all 0.3s; }
         nav a:hover { color: #00C4B4; }
         nav a:hover::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: #00C4B4; }
 
-        /* Поиск */
+        /* Search */
         .search-bar { 
-            background: white; padding: 30px 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border-bottom: 1px solid #E9ECEF;
+            background: white; 
+            padding: 20px 40px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border-bottom: 1px solid #E9ECEF;
         }
         .search-input { 
-            width: 100%; max-width: 600px; margin: 0 auto; display: block;
-            padding: 18px 25px 18px 60px; border: 2px solid #E9ECEF; border-radius: 50px; font-size: 1.1em; 
-            background: #F8F9FA url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='m11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a.5.5 0 0 0 .708-.708l-3.66-3.646zM8 4.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7z'/%3E%3C/svg%3E") no-repeat 25px center;
-            transition: all 0.3s; 
+            max-width: 500px; 
+            width: 100%; 
+            padding: 16px 20px; 
+            border: 2px solid #E9ECEF; 
+            border-radius: 50px; 
+            font-size: 1.1em; 
+            outline: none; 
+            transition: all 0.3s;
         }
-        .search-input:focus { border-color: #00C4B4; background: white; box-shadow: 0 0 0 4px rgba(0,196,180,0.1); outline: none; }
+        .search-input:focus { border-color: #00C4B4; box-shadow: 0 0 0 4px rgba(0,196,180,0.1); }
 
-        /* Фильтры */
+        /* Filters */
         .filters { 
-            background: white; padding: 25px 40px; display: flex; gap: 15px; overflow-x: auto; 
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05); scrollbar-width: none; -ms-overflow-style: none;
+            background: white; 
+            padding: 25px 40px; 
+            display: flex; 
+            gap: 20px; 
+            overflow-x: auto; 
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
         }
-        .filters::-webkit-scrollbar { display: none; }
         .filter-btn { 
-            padding: 12px 24px; background: #F8F9FA; color: #666; border: none; border-radius: 25px; 
-            font-size: 0.95em; font-weight: 500; cursor: pointer; white-space: nowrap; transition: all 0.3s;
-            border: 2px solid transparent;
+            padding: 10px 20px; 
+            background: #F8F9FA; 
+            color: #666; 
+            border: none; 
+            border-radius: 25px; 
+            font-size: 0.95em; 
+            font-weight: 500; 
+            cursor: pointer; 
+            white-space: nowrap;
+            transition: all 0.3s;
         }
-        .filter-btn.active, .filter-btn:hover { background: #00C4B4; color: white; border-color: #00C4B4; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,196,180,0.3); }
+        .filter-btn.active, .filter-btn:hover { background: #00C4B4; color: white; }
 
-        /* ⭐ FEATURED WINE СЕКЦИЯ ⭐ */
-        .featured-wine {
-            max-width: 1400px; margin: 60px auto; padding: 0 40px; background: white; 
-            border-radius: 30px; box-shadow: 0 25px 80px rgba(0,0,0,0.1); overflow: hidden;
+        /* Hero Banner */
+        .hero-banner { 
+            background: linear-gradient(135deg, #FF6B35, #F7931E); 
+            height: 300px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            color: white; 
+            font-size: 2.5em; 
+            font-weight: 700; 
+            margin: 20px 40px; 
+            border-radius: 20px; 
+            box-shadow: 0 15px 40px rgba(255,107,53,0.4);
+            position: relative; 
+            overflow: hidden;
         }
-        .featured-content {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding: 60px 40px;
+        .hero-banner::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; left: 0; 
+            right: 0; bottom: 0; 
+            background: url('https://via.placeholder.com/1920x300/FF6B35/FFFFFF?text=Фрукты+и+вино') center/cover; 
+            opacity: 0.3; 
         }
-        .featured-image { 
-            position: relative; border-radius: 25px; overflow: hidden; height: 500px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+
+        /* Catalog */
+        .catalog { max-width: 1400px; margin: 40px auto; padding: 0 40px; }
+        .catalog h2 { text-align: center; font-size: clamp(2em, 6vw, 3em); margin-bottom: 40px; color: #1A1A1A; font-weight: 700; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+        .product { 
+            background: white; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08); 
+            transition: all 0.4s ease;
         }
-        .featured-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-        .featured-image:hover img { transform: scale(1.05); }
-        .featured-info h2 { 
-            font-size: clamp(2.2em, 6vw, 3.5em); font-weight: 800; color: #1A1A1A; 
-            margin-bottom: 20px; background: linear-gradient(135deg, #FF6B35, #00C4B4); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        .product:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15); 
         }
-        .featured-info .subtitle { 
-            color: #666; font-size: 1.2em; margin-bottom: 25px; font-weight: 400; 
+        .product img { width: 100%; height: 300px; object-fit: cover; }
+        .product-info { padding: 25px; }
+        .product h3 { font-size: 1.3em; margin-bottom: 8px; color: #1A1A1A; font-weight: 600; }
+        .product p { color: #666; margin-bottom: 15px; font-size: 0.95em; }
+        .product-price { font-size: 1.5em; font-weight: 700; color: #00C4B4; }
+        .favorite { color: #FF6B6B; font-size: 1.3em; cursor: pointer; float: right; }
+
+        /* Footer */
+        footer { 
+            background: #1A1A1A; 
+            color: white; 
+            padding: 60px 40px 40px; 
+            text-align: center; 
+            margin-top: 80px;
         }
-        .featured-info .description { 
-            color: #555; font-size: 1.1em;
+        footer p { margin-bottom: 15px; color: #CCC; }
+        footer a { color: #00C4B4; text-decoration: none; font-weight: 500; }
+
+        /* Мобильное меню */
+        @media (max-width: 768px) {
+            header, .search-bar, .filters { padding-left: 20px; padding-right: 20px; }
+            .nav-toggle { display: flex; }
+            nav ul { 
+                position: fixed; top: 80px; left: 0; width: 100%; 
+                background: white; flex-direction: column; padding: 30px; 
+                transform: translateY(-100%); opacity: 0; transition: all 0.3s ease; 
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+            nav ul.active { transform: translateY(0); opacity: 1; }
+            .hero-banner { margin: 20px 20px; font-size: 1.8em; height: 250px; }
+            .catalog { padding: 0 20px; margin: 30px auto; }
+            .age-buttons { flex-direction: column; gap: 15px; }
         }
+    </style>
+</head>
+<body>
+    <!-- Возрастная проверка -->
+    <div class="age-gate" id="ageGate">
+        <div class="age-gate-logo">🍷🥃</div>
+        <h2>Данный сайт содержит информацию<br>об алкогольной продукции</h2>
+        <p>В соответствии с Федеральным законом № 171-ФЗ,<br>знакомить с такой информацией могут только лица старше 18 лет.</p>
+        <div class="age-buttons">
+            <button class="age-btn" onclick="confirmAge(true)">Мне исполнилось 18 лет</button>
+            <button class="age-btn deny" onclick="confirmAge(false)">Мне нет 18 лет</button>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div class="main-content" id="mainContent">
+        <header>
+            <div class="logo">Wine&amp;Whisky</div>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#catalog">Каталог</a></li>
+                    <li><a href="#brands">Бренды</a></li>
+                    <li><a href="#restaurants">Рестораны</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="nav-toggle" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+        </header>
+
+        <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Поиск по 1000+ позиций вин и виски...">
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active">Вино</button>
+            <button class="filter-btn">Виски</button>
+            <button class="filter-btn">Напитки</button>
+            <button class="filter-btn">Крепкие</button>
+            <button class="filter-btn">Новинки</button>
+            <button class="filter-btn">Скидки</button>
+        </div>
+
+        <div class="hero-banner">
+            Мускат
+        </div>
+
+        <section class="catalog" id="catalog">
+            <h2>Рекомендуем к дегустации</h2>
+            <div class="products-grid">
+                <div class="product">
+                    <img src="https://via.placeholder.com/280x300/F8F9FA/1A1A1A?text=Pouilly+Fumé" alt="Pouilly Fumé">
+                    <div class="product-info">
+                        <span class="favorite">❤️</span>
+                        <h3>Pouilly Fumé</h3>
+                        <p>Франция. Sauvignon Blanc. Травы, цитрус, минеральность.</p>
+                        <div class="product-price">2 180 ₽</div>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="https://via.placeholder.com/280x300/F8F9FA/1A1A1A?text=Gianni+Sovari" alt="Gianni Sovari">
+                    <div class="product-info">
+                        <span class="favorite">❤️</span>
+                        <h3>Gianni Sovari</h3>
+                        <p>Италия. Белое сухое. Цветы, персик, свежесть.</p>
+                        <div class="product-price">1 824 ₽</div>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="https://via.placeholder.com/280x300/F8F9FA/1A1A1A?text=BL+Wine" alt="BL Wine">
+                    <div class="product-info">
+                        <span class="favorite">💛</span>
+                        <h3>BL Wine</h3>
+                        <p>Артезианское. Франция. Минеральное, элегантное.</p>
+                        <div class="product-price">2 950 ₽</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 Wine&amp;Whisky. Москва | +7 (495) 123-45-67 | info@wine-whisky.ru</p>
+            <p>Винотеки: Куркино, Зюзино, Мансuroвский | Политика конфиденциальности</p>
+        </footer>
+    </div>
+
+    <script>
         function confirmAge(isAdult) {
-    document.querySelector('.age-gate').classList.add('hidden');
-    document.querySelector('.main-content').classList.add('show');
-    if (!isAdult) window.location.href = 'https://google.com?q=non-alcoholic';
-}
+            if (isAdult) {
+                localStorage.setItem('ageVerified', JSON.stringify({
+                    confirmed: true,
+                    date: new Date().toISOString()
+                }));
+                document.getElementById('ageGate').classList.add('hidden');
+                document.getElementById('mainContent').classList.add('show');
+            } else {
+                window.location.href = 'https://www.google.ru/search?q=безалкогольные+напитки';
+            }
+        }
 
+        window.addEventListener('DOMContentLoaded', function() {
+            const ageVerified = localStorage.getItem('ageVerified');
+            if (ageVerified) {
+                try {
+                    const data = JSON.parse(ageVerified);
+                    const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+                    if (new Date(data.date) > thirtyDaysAgo) {
+                        document.getElementById('ageGate').classList.add('hidden');
+                        document.getElementById('mainContent').classList.add('show');
+                        return;
+                    }
+                } catch(e) {}
+            }
+        });
+
+        function toggleMenu() {
+            document.getElementById('nav-menu').classList.toggle('active');
+        }
+
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('nav-menu').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
