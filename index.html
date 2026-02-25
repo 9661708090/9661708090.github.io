@@ -38,7 +38,7 @@
             </ul>
         </nav>
 
-        <!-- Поле поиска (всегда видимое, как вы хотите) -->
+        <!-- Поле поиска (всегда видимое) -->
         <div class="search-box">
             <input type="text" class="search-box__input" placeholder="Поиск по каталогу...">
             <button class="search-box__btn">
@@ -52,7 +52,7 @@
 </header>
 
     <main class="main">
-        <!-- Hero секция (была) -->
+        <!-- Hero секция -->
         <section class="hero">
             <div class="container hero__container">
                 <h1 class="hero__title">Винотека <br> Wine & Whisky</h1>
@@ -61,7 +61,7 @@
             </div>
         </section>
 
-        <!-- Баннер новинки (как в cavina) -->
+        <!-- Баннер новинки -->
         <section class="featured-banner">
             <div class="container featured-banner__container">
                 <div class="featured-banner__content">
@@ -76,7 +76,7 @@
             </div>
         </section>
 
-        <!-- Популярное (как в референсе) -->
+        <!-- Популярное -->
         <section class="popular">
             <div class="container">
                 <h2 class="section-title">Популярное</h2>
@@ -126,7 +126,7 @@
             </div>
         </section>
 
-        <!-- Скидки (как в референсе) -->
+        <!-- Скидки -->
         <section class="discounts">
             <div class="container">
                 <h2 class="section-title">Скидки</h2>
@@ -145,7 +145,7 @@
                         <button class="product-card__btn">В корзину</button>
                     </div>
 
-                    <!-- Еще карточки... -->
+                    <!-- Карточка со скидкой -->
                     <div class="product-card product-card--sale">
                         <span class="product-card__badge">-10%</span>
                         <div class="product-card__sku">Артикул 003457</div>
@@ -207,26 +207,79 @@
             </div>
         </div>
     </footer>
+
     <!-- Модальное окно проверки возраста -->
-<div class="age-verification" id="ageVerification">
-    <div class="age-verification__overlay"></div>
-    <div class="age-verification__modal">
-        <div class="age-verification__content">
-            <div class="age-verification__icon">🍷</div>
-            <h2 class="age-verification__title">Подтверждение возраста</h2>
-            <p class="age-verification__text">
-                Наш сайт содержит информацию о продукции, предназначенной для лиц, достигших совершеннолетия.
-            </p>
-            <p class="age-verification__question">Вам уже есть 18 лет?</p>
-            <div class="age-verification__buttons">
-                <button class="age-verification__btn age-verification__btn--yes" id="ageYes">Да, мне есть 18 лет</button>
-                <button class="age-verification__btn age-verification__btn--no" id="ageNo">Нет, мне меньше 18</button>
+    <div class="age-verification" id="ageVerification">
+        <div class="age-verification__overlay"></div>
+        <div class="age-verification__modal">
+            <div class="age-verification__content">
+                <div class="age-verification__icon">🍷</div>
+                <h2 class="age-verification__title">Подтверждение возраста</h2>
+                <p class="age-verification__text">
+                    Наш сайт содержит информацию о продукции, предназначенной для лиц, достигших совершеннолетия.
+                </p>
+                <p class="age-verification__question">Вам уже есть 18 лет?</p>
+                <div class="age-verification__buttons">
+                    <button class="age-verification__btn age-verification__btn--yes" id="ageYes">Да, мне есть 18 лет</button>
+                    <button class="age-verification__btn age-verification__btn--no" id="ageNo">Нет, мне меньше 18</button>
+                </div>
+                <p class="age-verification__disclaimer">
+                    Нажимая "Да", вы подтверждаете, что вам есть 18 лет, и соглашаетесь с условиями использования сайта.
+                </p>
             </div>
-            <p class="age-verification__disclaimer">
-                Нажимая "Да", вы подтверждаете, что вам есть 18 лет, и соглашаетесь с условиями использования сайта.
-            </p>
         </div>
     </div>
-</div>
+
+    <script>
+        // Проверка возраста
+        document.addEventListener('DOMContentLoaded', function() {
+            const ageVerification = document.getElementById('ageVerification');
+            const ageYes = document.getElementById('ageYes');
+            const ageNo = document.getElementById('ageNo');
+            
+            // Проверяем, подтверждал ли пользователь возраст ранее
+            const ageConfirmed = localStorage.getItem('ageConfirmed');
+            
+            if (ageConfirmed === 'true') {
+                // Если уже подтверждал - скрываем окно
+                ageVerification.classList.add('hidden');
+            } else {
+                // Блокируем прокрутку страницы
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Обработка кнопки "Да"
+            if (ageYes) {
+                ageYes.addEventListener('click', function() {
+                    localStorage.setItem('ageConfirmed', 'true');
+                    ageVerification.classList.add('hidden');
+                    document.body.style.overflow = '';
+                });
+            }
+            
+            // Обработка кнопки "Нет"
+            if (ageNo) {
+                ageNo.addEventListener('click', function() {
+                    window.location.href = 'https://www.google.com';
+                });
+            }
+            
+            // Блокируем закрытие по ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !ageVerification.classList.contains('hidden')) {
+                    e.preventDefault();
+                }
+            });
+            
+            // Блокируем клик по overlay
+            const overlay = document.querySelector('.age-verification__overlay');
+            if (overlay) {
+                overlay.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+            }
+        });
+    </script>
 </body>
 </html>
