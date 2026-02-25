@@ -593,18 +593,27 @@ body {
     border-color: var(--color-accent-wine);
 }
 
-/* ===== БАННЕР (доработка) ===== */
+/* ===== БАННЕР НОВИНКИ ===== */
 .featured-banner {
-    background: linear-gradient(135deg, #1A1F2E 0%, #2a2f40 100%);
-    color: white;
-    padding: 60px 0;
     margin: 40px 0;
+    width: 100%;
+}
+
+.featured-banner .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 30px;
 }
 
 .featured-banner__container {
+    background: linear-gradient(135deg, #1A1F2E 0%, #2a2f40 100%);
+    color: white;
+    padding: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 0; /* Уберите если не нужно */
+    width: 100%; /* Занимает всю ширину родительского container */
 }
 
 .featured-banner__content {
