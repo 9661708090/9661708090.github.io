@@ -103,3 +103,10 @@
         }
         .featured-info .description { 
             color: #555; font-size: 1.1em;
+        }
+        function confirmAge(isAdult) {
+    document.querySelector('.age-gate').classList.add('hidden');
+    document.querySelector('.main-content').classList.add('show');
+    if (!isAdult) window.location.href = 'https://google.com?q=non-alcoholic';
+}
+
