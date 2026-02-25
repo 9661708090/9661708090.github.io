@@ -1,0 +1,209 @@
+/* Обнуление и базовые настройки */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Переменные цветов (минималистичная палитра) */
+:root {
+    --color-bg: #ffffff;        /* Белый фон */
+    --color-text: #1a1a1a;      /* Почти черный текст */
+    --color-text-light: #4a4a4a; /* Серый для подзаголовков */
+    --color-accent: #8B4513;    /* Акцент (цвет дерева/бурбона) */
+    --color-border: #eaeaea;    /* Цвет границ */
+    --color-wine: #722F37;       /* Бордовый для вина */
+    --color-whisky: #DAA520;      /* Золотистый для виски */
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+}
+
+/* Контейнер-центровщик с адаптивными отступами */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===== ХЕДЕР И НАВИГАЦИЯ ===== */
+.header {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-bg);
+}
+
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Логотип */
+.logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--color-text);
+    letter-spacing: 1px;
+}
+.logo__wine {
+    color: var(--color-wine);
+}
+.logo__whisky {
+    color: var(--color-whisky);
+}
+
+/* Навигация */
+.nav__list {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav__link {
+    text-decoration: none;
+    color: var(--color-text);
+    font-weight: 500;
+    transition: color 0.2s ease;
+    font-size: 1rem;
+}
+
+.nav__link:hover,
+.nav__link.active {
+    color: var(--color-accent);
+}
+
+/* Кнопки */
+.btn {
+    display: inline-block;
+    padding: 10px 24px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn--primary {
+    background-color: var(--color-accent);
+    color: white;
+}
+.btn--primary:hover {
+    background-color: #6a3510; /* Темнее акцента */
+}
+
+.btn--outline {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    background: transparent;
+}
+.btn--outline:hover {
+    background-color: var(--color-accent);
+    color: white;
+}
+
+/* ===== ГЛАВНЫЙ ЭКРАН (HERO) ===== */
+.hero {
+    padding: 80px 0;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.hero__title {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.hero__subtitle {
+    font-size: 1.2rem;
+    color: var(--color-text-light);
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ===== ФУТЕР ===== */
+.footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-bg);
+}
+
+.footer__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer__links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+.footer__links a {
+    text-decoration: none;
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+}
+
+.footer__links a:hover {
+    color: var(--color-accent);
+}
+
+/* ===== АДАПТИВНОСТЬ (МОБИЛЬНАЯ ВЕРСИЯ) ===== */
+@media screen and (max-width: 768px) {
+    /* Планшеты и мобильные */
+    .header__container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav__list {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .hero__title {
+        font-size: 2.2rem;
+    }
+
+    .footer__container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer__links {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Маленькие телефоны */
+    .hero {
+        padding: 50px 0;
+    }
+
+    .hero__title {
+        font-size: 1.8rem;
+    }
+
+    .btn {
+        width: 100%; /* Кнопки на всю ширину на телефонах */
+        text-align: center;
+    }
+}
