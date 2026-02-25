@@ -238,8 +238,9 @@
         function confirmAge(isAdult) {
             if (isAdult) {
             localStorage.setItem('ageVerified', 'true');
-            document.getElementById('ageGate').classList.add('hidden');
-        document.getElementById('mainContent').classList.add('show');
+            document.getElementById('ageGate').style.display = 'none';
+            document.getElementById('mainContent').style.opacity = '1';
+
         } else {
             window.location.href = 'https://www.google.ru/search?q=безалкогольные+напитки';
         }
