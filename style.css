@@ -595,16 +595,21 @@ body {
 
 /* ===== НОВИНКА (БАННЕР) ===== */
 .featured-banner {
-    background: linear-gradient(135deg, #1A1F2E 0%, #2a2f40 100%);
-    color: white;
-    padding: 60px 0;
     margin: 40px 0;
+    width: 100%;
 }
 
 .featured-banner__container {
+    background: linear-gradient(135deg, #1A1F2E 0%, #2a2f40 100%);
+    color: white;
+    padding: 60px;
+    border-radius: 20px; /* Добавил скругление, но вы можете убрать */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1280px; /* Та же максимальная ширина, что и у хедера */
+    margin: 0 auto;
+    width: calc(100% - 60px); /* Учитывает padding контейнера */
 }
 
 .featured-banner__content {
@@ -639,6 +644,20 @@ body {
 .featured-banner__btn:hover {
     background: white;
     color: #1A1F2E;
+}
+
+/* Для мобильных */
+@media screen and (max-width: 768px) {
+    .featured-banner__container {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+        padding: 40px 30px;
+    }
+    
+    .featured-banner__title {
+        font-size: 2.2rem;
+    }
 }
 
 /* ===== ФУТЕР ===== */
