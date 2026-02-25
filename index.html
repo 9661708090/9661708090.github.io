@@ -236,14 +236,14 @@
     <script>
         function confirmAge(isAdult) {
             if (isAdult) {
-                localStorage.setItem('ageVerified', JSON.stringify({confirmed: true, date: new Date().toISOString()}));
-                document.getElementById('ageGate').style.display = 'none';
-                document.getElementById('mainContent').style.opacity = '1';
-
-            } else {
-                window.location.href = 'https://www.google.ru/search?q=безалкогольные+напитки';
-            }
+            localStorage.setItem('ageVerified', 'true');
+            document.getElementById('ageGate').style.display = 'none';
+            document.getElementById('mainContent').style.opacity = '1';
+        } else {
+            window.location.href = 'https://www.google.ru/search?q=безалкогольные+напитки';
         }
+    }
+
 
         window.addEventListener('DOMContentLoaded', function() {
             const ageVerified = localStorage.getItem('ageVerified');
