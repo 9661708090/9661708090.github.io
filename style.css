@@ -34,8 +34,7 @@ body {
 
 /* ===== ХЕДЕР (НОВАЯ СТРУКТУРА) ===== */
 .header {
-    padding: 15px 0;
-    border-bottom: 1px solid var(--color-border);
+    padding: 15px 0 0 0;
     background: white;
 }
 
@@ -44,12 +43,22 @@ body {
     align-items: center;
     justify-content: space-between;
     gap: 30px;
-    margin-bottom: 15px;
+    padding-bottom: 15px;
 }
 
 .header__bottom {
-    padding-top: 10px;
-    border-top: 1px solid var(--color-border);
+    padding: 10px 0;
+    border-top: 2px solid var(--color-border);
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    background: white;
+}
+
+.header__bottom .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 30px;
 }
 
 /* Логотип */
@@ -73,7 +82,7 @@ body {
     color: var(--color-text);
 }
 
-/* Поле поиска - увеличенное */
+/* Поле поиска */
 .search-box {
     display: flex;
     align-items: center;
@@ -85,7 +94,7 @@ body {
 }
 
 .search-box--large {
-    width: 400px; /* В 2 раза длиннее (было 250px) */
+    width: 800px;
 }
 
 .search-box:hover,
@@ -180,6 +189,11 @@ body {
 }
 
 /* Навигация */
+.header__bottom .nav {
+    display: flex;
+    justify-content: center;
+}
+
 .nav__list {
     display: flex;
     list-style: none;
@@ -187,6 +201,7 @@ body {
     margin: 0;
     padding: 0;
     align-items: center;
+    justify-content: center;
 }
 
 .nav__link {
@@ -210,52 +225,84 @@ body {
     font-weight: 600;
 }
 
-/* Выпадающее меню */
-.nav__item--dropdown {
-    position: relative;
+/* Адаптивность для хедера */
+@media screen and (max-width: 1400px) {
+    .search-box--large {
+        width: 600px;
+    }
 }
 
-.dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: white;
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
-    padding: 10px 0;
-    min-width: 220px;
-    display: none;
-    z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+@media screen and (max-width: 1200px) {
+    .search-box--large {
+        width: 400px;
+    }
+    
+    .nav__list {
+        gap: 25px;
+    }
 }
 
-.nav__item--dropdown:hover .dropdown {
-    display: block;
+@media screen and (max-width: 992px) {
+    .header__top {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    
+    .search-box--large {
+        width: 100%;
+        order: 3;
+    }
+    
+    .header__phone {
+        margin-left: auto;
+    }
+    
+    .header__bottom {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+    }
 }
 
-.dropdown li {
-    list-style: none;
+@media screen and (max-width: 768px) {
+    .header__top {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .logo {
+        text-align: center;
+    }
+    
+    .header__phone {
+        text-align: center;
+        margin: 0;
+    }
+    
+    .header__icons {
+        justify-content: center;
+    }
+    
+    .nav__list {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
 }
 
-.dropdown a {
-    display: block;
-    padding: 8px 20px;
-    text-decoration: none;
-    color: var(--color-text);
-    font-size: 0.9rem;
-    transition: background 0.2s;
+@media screen and (max-width: 480px) {
+    .header__icons {
+        gap: 10px;
+    }
+    
+    .nav__list {
+        gap: 10px;
+    }
+    
+    .nav__link {
+        font-size: 0.85rem;
+    }
 }
-
-.dropdown a:hover {
-    background: var(--color-bg-light);
-    color: var(--color-accent-wine);
-}
-
-.dropdown .sale-link {
-    color: var(--color-accent-wine);
-    font-weight: 500;
-}
-
 /* ===== ПРОВЕРКА ВОЗРАСТА ===== */
 .age-verification {
     position: fixed;
