@@ -2,64 +2,217 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <!-- Управляем масштабированием на мобильных устройствах -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wine & Whisky — Винотека</title>
-    <!-- Подключаем CSS -->
+    <title>Каталог — Wine & Whisky</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- Шапка сайта (хедер) -->
     <header class="header">
         <div class="container header__container">
-            <!-- Логотип -->
             <a href="index.html" class="logo">
-                <span class="logo__wine">Wine</span> & <span class="logo__whisky">Whisky</span>
+                <span class="logo__wine">Wine</span><span class="logo__ampersand"> & </span><span class="logo__whisky">Whisky</span>
             </a>
-
-            <!-- Навигационное меню (основное) -->
+            
             <nav class="nav">
-                <!-- Бургер-иконка будет здесь позже (для мобильной версии) -->
                 <ul class="nav__list">
-                    <li class="nav__item"><a href="index.html" class="nav__link active">Главная</a></li>
-                    <li class="nav__item"><a href="catalog.html" class="nav__link">Каталог</a></li>
+                    <li class="nav__item"><a href="index.html" class="nav__link">Главная</a></li>
+                    <li class="nav__item"><a href="catalog.html" class="nav__link active">Каталог</a></li>
                     <li class="nav__item"><a href="blog.html" class="nav__link">Блог</a></li>
                     <li class="nav__item"><a href="contacts.html" class="nav__link">Контакты</a></li>
                 </ul>
             </nav>
-
-            <!-- Кнопка для связи (корзину пока не делаем, но можно добавить телефон) -->
+            
             <div class="header__actions">
-                <a href="contacts.html" class="btn btn--outline">Связаться</a>
+                <button class="search-btn">🔍</button>
             </div>
         </div>
     </header>
 
-    <!-- Главный контент -->
     <main class="main">
-        <!-- Здесь будет содержимое каждой страницы -->
-        <section class="hero">
-            <div class="container hero__container">
-                <h1 class="hero__title">Винотека <br> Wine & Whisky</h1>
-                <p class="hero__subtitle">Минимализм в каждой капле. Изысканные вкусы со всего света.</p>
-                <a href="catalog.html" class="btn btn--primary">Перейти в каталог</a>
+        <!-- Баннер новинки (как в референсе) -->
+        <section class="featured-banner">
+            <div class="container featured-banner__container">
+                <div class="featured-banner__content">
+                    <div class="featured-banner__label">НОВИНКА ИЗ БУРГУНДИИ!</div>
+                    <h2 class="featured-banner__title">Откройте для себя элегантность</h2>
+                    <button class="featured-banner__btn">Смотреть новинки</button>
+                </div>
+                <div class="featured-banner__image">
+                    <!-- Здесь можно добавить изображение бутылки -->
+                </div>
             </div>
         </section>
 
-        <!-- Другие секции (например, акции или преимущества) будут добавлены позже -->
+        <!-- Каталог -->
+        <section class="catalog">
+            <div class="container">
+                <div class="catalog__header">
+                    <div class="breadcrumbs">
+                        <a href="index.html">Главная</a> / <span>Каталог</span>
+                    </div>
+                    <h1 class="catalog__title">Каталог вин и виски</h1>
+                    
+                    <div class="catalog__filters">
+                        <button class="filter-btn active">Все</button>
+                        <button class="filter-btn">Вино</button>
+                        <button class="filter-btn">Шампанское</button>
+                        <button class="filter-btn">Виски</button>
+                        <button class="filter-btn">Крепкие напитки</button>
+                        <button class="filter-btn">Аксессуары</button>
+                        <button class="filter-btn">Акции</button>
+                    </div>
+                </div>
+
+                <!-- Сетка товаров -->
+                <div class="products-grid">
+                    <!-- Карточка 1 (новинка) -->
+                    <div class="product-card">
+                        <span class="product-card__badge">Новинка</span>
+                        <div class="product-card__sku">Артикул 001982</div>
+                        <h3 class="product-card__title">HAUT POITOU LE FIE GRIS</h3>
+                        <div class="product-card__subtitle">Франция, Белое, Сухое, Долина Луары</div>
+                        <div class="product-card__details">
+                            <div class="product-detail">
+                                <span class="product-detail__label">Объем:</span>
+                                <span class="product-detail__value">0,75 л</span>
+                            </div>
+                            <div class="product-detail">
+                                <span class="product-detail__label">Год:</span>
+                                <span class="product-detail__value">2024</span>
+                            </div>
+                        </div>
+                        <div class="product-card__rating">
+                            <span>★★★★☆</span>
+                            <span>4.2 Vivino</span>
+                        </div>
+                        <div class="product-card__price">2 970 ₽</div>
+                        <button class="product-card__btn">В корзину</button>
+                    </div>
+
+                    <!-- Карточка 2 (со скидкой) -->
+                    <div class="product-card">
+                        <span class="product-card__badge">Скидка</span>
+                        <div class="product-card__sku">Артикул 001824</div>
+                        <h3 class="product-card__title">SOAVE GIANNITESSARI</h3>
+                        <div class="product-card__subtitle">Италия, Белое, Сухое, Венето</div>
+                        <div class="product-card__details">
+                            <div class="product-detail">
+                                <span class="product-detail__label">Объем:</span>
+                                <span class="product-detail__value">0,75 л</span>
+                            </div>
+                            <div class="product-detail">
+                                <span class="product-detail__label">Год:</span>
+                                <span class="product-detail__value">2024</span>
+                            </div>
+                        </div>
+                        <div class="product-card__rating">
+                            <span>★★★★☆</span>
+                            <span>3.8 Vivino</span>
+                        </div>
+                        <div class="product-card__price">2 970 ₽</div>
+                        <button class="product-card__btn">В корзину</button>
+                    </div>
+
+                    <!-- Карточка 3 -->
+                    <div class="product-card">
+                        <div class="product-card__sku">Артикул 001681</div>
+                        <h3 class="product-card__title">TAMPESTA ROSADO</h3>
+                        <div class="product-card__subtitle">Испания, Розовое, Сухое, Кастилия и Леон</div>
+                        <div class="product-card__details">
+                            <div class="product-detail">
+                                <span class="product-detail__label">Объем:</span>
+                                <span class="product-detail__value">0,75 л</span>
+                            </div>
+                            <div class="product-detail">
+                                <span class="product-detail__label">Год:</span>
+                                <span class="product-detail__value">2023</span>
+                            </div>
+                        </div>
+                        <div class="product-card__rating">
+                            <span>★★★★☆</span>
+                            <span>3.8 Vivino</span>
+                        </div>
+                        <div class="product-card__price">2 970 ₽</div>
+                        <button class="product-card__btn">В корзину</button>
+                    </div>
+
+                    <!-- Карточка 4 (Виски) -->
+                    <div class="product-card">
+                        <div class="product-card__sku">Артикул 002145</div>
+                        <h3 class="product-card__title">GLENMORANGIE ORIGINAL</h3>
+                        <div class="product-card__subtitle">Шотландия, Односолодовый, Виски</div>
+                        <div class="product-card__details">
+                            <div class="product-detail">
+                                <span class="product-detail__label">Объем:</span>
+                                <span class="product-detail__value">0,7 л</span>
+                            </div>
+                            <div class="product-detail">
+                                <span class="product-detail__label">Выдержка:</span>
+                                <span class="product-detail__value">10 лет</span>
+                            </div>
+                        </div>
+                        <div class="product-card__rating">
+                            <span>★★★★★</span>
+                            <span>4.5 Vivino</span>
+                        </div>
+                        <div class="product-card__price">5 490 ₽</div>
+                        <button class="product-card__btn">В корзину</button>
+                    </div>
+                </div>
+
+                <!-- Пагинация -->
+                <div class="pagination">
+                    <a href="#" class="pagination__link active">1</a>
+                    <a href="#" class="pagination__link">2</a>
+                    <a href="#" class="pagination__link">3</a>
+                    <a href="#" class="pagination__link">4</a>
+                    <a href="#" class="pagination__link">→</a>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- Подвал сайта (футер) -->
     <footer class="footer">
-        <div class="container footer__container">
-            <p class="footer__copyright">© 2025 Wine & Whisky. Все права защищены.</p>
-            <ul class="footer__links">
-                <li><a href="#">Политика конфиденциальности</a></li>
-                <li><a href="#">Доставка и оплата</a></li>
-            </ul>
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__col">
+                    <h4 class="footer__col-title">Wine & Whisky</h4>
+                    <ul class="footer__links">
+                        <li><a href="#">О нас</a></li>
+                        <li><a href="#">Блог</a></li>
+                        <li><a href="#">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__col-title">Каталог</h4>
+                    <ul class="footer__links">
+                        <li><a href="#">Вино</a></li>
+                        <li><a href="#">Шампанское</a></li>
+                        <li><a href="#">Виски</a></li>
+                        <li><a href="#">Аксессуары</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__col-title">Помощь</h4>
+                    <ul class="footer__links">
+                        <li><a href="#">Доставка</a></li>
+                        <li><a href="#">Оплата</a></li>
+                        <li><a href="#">Возврат</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__col-title">Контакты</h4>
+                    <ul class="footer__links">
+                        <li><a href="tel:+74951234567">+7 (495) 123-45-67</a></li>
+                        <li><a href="mailto:info@winewhisky.ru">info@winewhisky.ru</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>© 2025 Wine & Whisky. Все права защищены.</p>
+                <p>18+ Информация на сайте не является рекламой</p>
+            </div>
         </div>
     </footer>
-
 </body>
 </html>
