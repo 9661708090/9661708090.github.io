@@ -234,101 +234,101 @@
         </footer>
     </div>
 
-    <script>
-        function confirmAge(isAdult) {
-            if (isAdult) {
-                localStorage.setItem('ageVerified', 'true');
-                document.getElementById('ageGate').classList.add('hidden');
-                document.getElementById('mainContent').classList.add('show');
-            } else {
-                window.location.href = 'https://www.google.com/search?q=безалкогольные+напитки';
-            }
+<script>
+    function confirmAge(isAdult) {
+        if (isAdult) {
+            localStorage.setItem('ageVerified', 'true');
+            document.getElementById('ageGate').classList.add('hidden');
+            document.getElementById('mainContent').classList.add('show');
+        } else {
+            window.location.href = 'https://www.google.com/search?q=безалкогольные+напитки';
         }
-
-
-        window.addEventListener('DOMContentLoaded', function() {
-    if (localStorage.getItem('ageVerified') === 'true') {
-        document.getElementById('ageGate').classList.add('hidden');
-        document.getElementById('mainContent').classList.add('show');
     }
-});
 
+    window.addEventListener('DOMContentLoaded', function() {
+        if (localStorage.getItem('ageVerified') === 'true') {
+            document.getElementById('ageGate').classList.add('hidden');
+            document.getElementById('mainContent').classList.add('show');
+        }
+    });
 
-        // Поиск
-        function searchProducts() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
+    // Поиск
+    function searchProducts() {
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        const products = document.querySelectorAll('.product');
+        const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+        
+        products.forEach(product => {
+            const text = product.textContent.toLowerCase();
+            const matchesSearch = text.includes(query);
+            const matchesFilter = activeFilter === 'all' || product.dataset.category === activeFilter;
+            
+            product.style.display = (matchesSearch && matchesFilter) ? 'block' : 'none';
+        });
+        
+        checkNoResults();
+    }
+
+    // Фильтры
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const filter = btn.dataset.filter;
             const products = document.querySelectorAll('.product');
-            const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
             
             products.forEach(product => {
-                const text = product.textContent.toLowerCase();
-                const matchesSearch = text.includes(query);
-                const matchesFilter = activeFilter === 'all' || product.dataset.category === activeFilter;
+                const matchesFilter = filter === 'all' || product.dataset.category === filter;
+                const matchesSearch = product.textContent.toLowerCase().includes(searchQuery);
                 
-                product.style.display = (matchesSearch && matchesFilter) ? 'block' : 'none';
+                if (matchesFilter && matchesSearch) {
+                    product.style.display = 'block';
+                    product.style.transform = 'scale(0.95)';
+                    setTimeout(() => product.style.transform = 'scale(1)', 150);
+                } else {
+                    product.style.display = 'none';
+                }
             });
             
-            // Добавить проверку на пустой результат
             checkNoResults();
-        }
-
-        // Фильтры
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                const filter = btn.dataset.filter;
-                const products = document.querySelectorAll('.product');
-                const searchQuery = document.getElementById('searchInput').value.toLowerCase();
-                
-                products.forEach(product => {
-                    const matchesFilter = filter === 'all' || product.dataset.category === filter;
-                    const matchesSearch = product.textContent.toLowerCase().includes(searchQuery);
-                    
-                    if (matchesFilter && matchesSearch) {
-                        product.style.display = 'block';
-                        product.style.transform = 'scale(0.95)';
-                        setTimeout(() => product.style.transform = 'scale(1)', 150);
-                    } else {
-                        product.style.display = 'none';
-                    }
-                });
-                
-                checkNoResults(); // Проверка пустого результата
-            });
-
-        // Избранное
-        function toggleFavorite(el) {
-            el.classList.toggle('liked');
-        }
-
-        // Мобильное меню
-        function toggleMenu() {
-            document.getElementById('nav-menu').classList.toggle('active');
-        }
-
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('nav-menu').classList.remove('active');
-            });
         });
-            function checkNoResults() {
-    const products = document.querySelectorAll('.product');
-    const visibleProducts = Array.from(products).filter(p => p.style.display !== 'none');
-    
-    // Создать или найти сообщение о пустом результате
-    let noResults = document.querySelector('.no-results-message');
-    if (!noResults) {
-        noResults = document.createElement('div');
-        noResults.className = 'no-results-message';
-        noResults.style.cssText = 'text-align: center; padding: 50px; font-size: 1.2em; color: #666; display: none;';
-        noResults.textContent = 'По вашему запросу ничего не найдено';
-        document.getElementById('productsGrid').after(noResults);
+    });
+
+    // Избранное
+    function toggleFavorite(el) {
+        el.classList.toggle('liked');
     }
-    
-    noResults.style.display = visibleProducts.length === 0 ? 'block' : 'none';
-}
-    </script>
+
+    // Мобильное меню
+    function toggleMenu() {
+        document.getElementById('nav-menu').classList.toggle('active');
+    }
+
+    // Закрытие меню при клике на ссылку
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('nav-menu').classList.remove('active');
+        });
+    });
+
+    // Проверка пустого результата
+    function checkNoResults() {
+        const products = document.querySelectorAll('.product');
+        const visibleProducts = Array.from(products).filter(p => p.style.display !== 'none');
+        
+        let noResults = document.querySelector('.no-results-message');
+        if (!noResults) {
+            noResults = document.createElement('div');
+            noResults.className = 'no-results-message';
+            noResults.style.cssText = 'text-align: center; padding: 50px; font-size: 1.2em; color: #666; display: none;';
+            noResults.textContent = 'По вашему запросу ничего не найдено';
+            document.getElementById('productsGrid').after(noResults);
+        }
+        
+        noResults.style.display = visibleProducts.length === 0 ? 'block' : 'none';
+    }
+</script>
 </body>
 </html>
