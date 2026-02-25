@@ -61,8 +61,9 @@
         }
         .search-input { 
             width: 100%; max-width: 600px; margin: 0 auto; display: block;
-            padding: 18px 25px; border: 2px solid #E9ECEF; border-radius: 50px; font-size: 1.1em; 
-            background: #F8F9FA; transition: all 0.3s; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='m11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a.5.5 0 0 0 .708-.708l-3.66-3.646zM8 4.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: 20px center;
+            padding: 18px 25px 18px 60px; border: 2px solid #E9ECEF; border-radius: 50px; font-size: 1.1em; 
+            background: #F8F9FA url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='m11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a.5.5 0 0 0 .708-.708l-3.66-3.646zM8 4.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7z'/%3E%3C/svg%3E") no-repeat 25px center;
+            transition: all 0.3s; 
         }
         .search-input:focus { border-color: #00C4B4; background: white; box-shadow: 0 0 0 4px rgba(0,196,180,0.1); outline: none; }
 
@@ -79,6 +80,52 @@
         }
         .filter-btn.active, .filter-btn:hover { background: #00C4B4; color: white; border-color: #00C4B4; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,196,180,0.3); }
 
+        /* ⭐ FEATURED WINE СЕКЦИЯ ⭐ */
+        .featured-wine {
+            max-width: 1400px; margin: 60px auto; padding: 0 40px; background: white; 
+            border-radius: 30px; box-shadow: 0 25px 80px rgba(0,0,0,0.1); overflow: hidden;
+        }
+        .featured-content {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding: 60px 40px;
+        }
+        .featured-image { 
+            position: relative; border-radius: 25px; overflow: hidden; height: 500px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        .featured-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .featured-image:hover img { transform: scale(1.05); }
+        .featured-info h2 { 
+            font-size: clamp(2.2em, 6vw, 3.5em); font-weight: 800; color: #1A1A1A; 
+            margin-bottom: 20px; background: linear-gradient(135deg, #FF6B35, #00C4B4); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .featured-info .subtitle { 
+            color: #666; font-size: 1.2em; margin-bottom: 25px; font-weight: 400; 
+        }
+        .featured-info .description { 
+            color: #555; font-size: 1.1em; line-height: 1.7; margin-bottom: 35px; 
+        }
+        .featured-actions { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+        .btn-cart { 
+            padding: 18px 40px; background: linear-gradient(135deg, #00C4B4, #00A89A); color: white; 
+            border: none; border-radius: 15px; font-size: 1.2em; font-weight: 700; cursor: pointer;
+            box-shadow: 0 15px 40px rgba(0,196,180,0.4); transition: all 0.3s ease; position: relative; overflow: hidden;
+        }
+        .btn-cart:hover { transform: translateY(-3px); box-shadow: 0 20px 50px rgba(0,196,180,0.5); }
+        .btn-cart:active { transform: translateY(-1px); }
+        .btn-favorite { 
+            width: 65px; height: 65px; border-radius: 50%; background: white; border: 3px solid #E9ECEF; 
+            color: #FFEB3B; font-size: 1.6em; cursor: pointer; transition: all 0.3s ease;
+            display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .btn-favorite:hover { border-color: #FF6B6B; transform: scale(1.1); }
+        .btn-favorite.liked { color: #FF6B6B; border-color: #FF6B6B; animation: heartPulse 0.6s ease; }
+        @keyframes heartPulse { 0%, 100% { transform: scale(1.1); } 50% { transform: scale(1.25); } }
+        .featured-price { 
+            font-size: 2.5em; font-weight: 800; color: #00C4B4; margin-left: 30px; 
+            text-shadow: 2px 2px 10px rgba(0,196,180,0.3);
+        }
+        @media (max-width: 768px) { .featured-content { grid-template-columns: 1fr; gap: 40px; padding: 40px 20px; text-align: center; } }
+
         /* Баннер */
         .hero-banner { 
             background: linear-gradient(135deg, #FF6B35 0%, #F7931E 50%, #F6AD2A 100%); 
@@ -93,32 +140,23 @@
             opacity: 0.2; 
         }
 
-        /* Каталог */
+        /* Остальные секции */
+        .filters, .search-bar, header { padding-left: 40px; padding-right: 40px; }
         .catalog { max-width: 1400px; margin: 50px auto; padding: 0 40px; }
         .catalog h2 { text-align: center; font-size: clamp(2.2em, 7vw, 3.5em); margin-bottom: 50px; color: #1A1A1A; font-weight: 800; position: relative; }
         .catalog h2::after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: linear-gradient(90deg, #00C4B4, #FF6B35); border-radius: 2px; }
-        
         .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
-        .product { 
-            background: white; border-radius: 25px; overflow: hidden; box-shadow: 0 15px 50px rgba(0,0,0,0.08); 
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
+        .product { background: white; border-radius: 25px; overflow: hidden; box-shadow: 0 15px 50px rgba(0,0,0,0.08); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .product:hover { transform: translateY(-15px) scale(1.02); box-shadow: 0 35px 80px rgba(0,0,0,0.15); }
         .product img { width: 100%; height: 340px; object-fit: cover; transition: transform 0.4s ease; }
         .product:hover img { transform: scale(1.05); }
-        .product-info { padding: 30px; position: relative; }
-        .favorite { 
-            position: absolute; top: 20px; right: 20px; color: #FFEB3B; font-size: 1.4em; cursor: pointer; 
-            transition: all 0.3s; background: white; width: 45px; height: 45px; border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
+        .product-info { padding: 30px; }
+        .favorite { position: absolute; top: 20px; right: 20px; color: #FFEB3B; font-size: 1.4em; cursor: pointer; transition: all 0.3s; background: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
         .favorite.liked { color: #FF6B6B; transform: scale(1.1); animation: heartPulse 0.6s ease; }
-        @keyframes heartPulse { 0%, 100% { transform: scale(1.1); } 50% { transform: scale(1.3); } }
         .product h3 { font-size: 1.4em; margin-bottom: 10px; color: #1A1A1A; font-weight: 700; }
         .product p { color: #666; margin-bottom: 20px; font-size: 0.98em; line-height: 1.5; }
         .product-price { font-size: 1.7em; font-weight: 800; color: #00C4B4; }
 
-        /* Footer */
         footer { background: #1A1A1A; color: white; padding: 80px 40px 50px; text-align: center; margin-top: 100px; }
         footer p { margin-bottom: 15px; color: #CCC; }
         footer a { color: #00C4B4; text-decoration: none; font-weight: 600; }
@@ -127,11 +165,12 @@
         @media (max-width: 768px) {
             header, .search-bar, .filters, .catalog { padding-left: 20px; padding-right: 20px; }
             .nav-toggle { display: flex; }
-            nav ul { position: fixed; top: 80px; left: 0; width: 100%; background: white; flex-direction: column; padding: 30px; 
-                transform: translateY(-100%); opacity: 0; transition: all 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+            nav ul { position: fixed; top: 80px; left: 0; width: 100%; background: white; flex-direction: column; padding: 30px; transform: translateY(-100%); opacity: 0; transition: all 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
             nav ul.active { transform: translateY(0); opacity: 1; }
             .hero-banner { margin: 20px; height: 280px; }
             .age-buttons { flex-direction: column; gap: 15px; }
+            .featured-actions { justify-content: center; }
+            .featured-price { margin-left: 0; margin-top: 20px; order: -1; width: 100%; text-align: center; }
         }
     </style>
 </head>
@@ -172,139 +211,4 @@
         <!-- Фильтры -->
         <div class="filters">
             <button class="filter-btn active" data-filter="all">Все</button>
-            <button class="filter-btn" data-filter="wine">Вино</button>
-            <button class="filter-btn" data-filter="whisky">Виски</button>
-            <button class="filter-btn" data-filter="sparkling">Игристое</button>
-            <button class="filter-btn" data-filter="new">Новинки</button>
-            <button class="filter-btn" data-filter="sale">Скидки</button>
-        </div>
-
-        <!-- Баннер Мускат -->
-        <div class="hero-banner">
-            МУСКАТ
-        </div>
-
-        <!-- Каталог -->
-        <section class="catalog" id="catalog">
-            <h2>Рекомендуем к дегустации</h2>
-            <div class="products-grid" id="productsGrid">
-                <div class="product" data-category="wine">
-                    <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=340&fit=crop&crop=entropy" alt="Pouilly Fumé">
-                    <div class="product-info">
-                        <span class="favorite" onclick="toggleFavorite(this)">💛</span>
-                        <h3>Pouilly Fumé</h3>
-                        <p>Франция, Луара. Sauvignon Blanc. Травяные ноты, цитрус, мощная минеральность.</p>
-                        <div class="product-price">2 180 ₽</div>
-                    </div>
-                </div>
-                <div class="product" data-category="wine">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=340&fit=crop&crop=entropy" alt="Gavi">
-                    <div class="product-info">
-                        <span class="favorite" onclick="toggleFavorite(this)">❤️</span>
-                        <h3>Gianni Sovari Gavi</h3>
-                        <p>Италия, Пьемонт. Белое сухое. Цветочные ароматы, персик, миндаль.</p>
-                        <div class="product-price">1 824 ₽</div>
-                    </div>
-                </div>
-                <div class="product" data-category="sparkling">
-                    <img src="https://images.unsplash.com/photo-1571877227019-15d9822ca3d4?w=400&h=340&fit=crop&crop=entropy" alt="Prosecco">
-                    <div class="product-info">
-                        <span class="favorite liked" onclick="toggleFavorite(this)">💛</span>
-                        <h3>Prosecco Superiore DOCG</h3>
-                        <p>Италия, Венето. Игристое. Зеленое яблоко, цитрус, цветы акaции.</p>
-                        <div class="product-price">1 950 ₽</div>
-                    </div>
-                </div>
-                <div class="product" data-category="wine">
-                    <img src="https://images.unsplash.com/photo-1551024506-0b72cbb76f75?w=400&h=340&fit=crop&crop=entropy" alt="BL Wine">
-                    <div class="product-info">
-                        <span class="favorite" onclick="toggleFavorite(this)">💛</span>
-                        <h3>BL Artisanale</h3>
-                        <p>Франция, Ардеш. Артезианское. Минеральное, элегантное, долгая послевкусие.</p>
-                        <div class="product-price">2 950 ₽</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <p>© 2026 Wine&Whisky. Москва | +7 (495) 123-45-67 | info@wine-whisky.ru</p>
-            <p>Винотеки: Куркино, Зюзино, Мансuroвский | Политика конфиденциальности</p>
-        </footer>
-    </div>
-
-    <script>
-        function confirmAge(isAdult) {
-            if (isAdult) {
-                localStorage.setItem('ageVerified', JSON.stringify({confirmed: true, date: new Date().toISOString()}));
-                document.getElementById('ageGate').classList.add('hidden');
-                document.getElementById('mainContent').classList.add('show');
-            } else {
-                window.location.href = 'https://www.google.ru/search?q=безалкогольные+напитки';
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', function() {
-            const ageVerified = localStorage.getItem('ageVerified');
-            if (ageVerified) {
-                try {
-                    const data = JSON.parse(ageVerified);
-                    const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
-                    if (new Date(data.date) > thirtyDaysAgo) {
-                        document.getElementById('ageGate').classList.add('hidden');
-                        document.getElementById('mainContent').classList.add('show');
-                        return;
-                    }
-                } catch(e) {}
-            }
-        });
-
-        // Поиск
-        function searchProducts() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const products = document.querySelectorAll('.product');
-            products.forEach(product => {
-                const text = product.textContent.toLowerCase();
-                product.style.display = text.includes(query) ? 'block' : 'none';
-            });
-        }
-
-        // Фильтры
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                const filter = btn.dataset.filter;
-                const products = document.querySelectorAll('.product');
-                
-                products.forEach(product => {
-                    if (filter === 'all' || product.dataset.category === filter) {
-                        product.style.display = 'block';
-                        product.style.transform = 'scale(0.95)';
-                        setTimeout(() => product.style.transform = 'scale(1)', 150);
-                    } else {
-                        product.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        // Избранное
-        function toggleFavorite(el) {
-            el.classList.toggle('liked');
-        }
-
-        // Мобильное меню
-        function toggleMenu() {
-            document.getElementById('nav-menu').classList.toggle('active');
-        }
-
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('nav-menu').classList.remove('active');
-            });
-        });
-    </script>
-</body>
-</html>
+            <button
