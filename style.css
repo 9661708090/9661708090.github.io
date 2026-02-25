@@ -678,6 +678,144 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* ===== МОБИЛЬНАЯ ВЕРСИЯ ХЕДЕРА ===== */
+@media screen and (max-width: 768px) {
+    .header {
+        padding: 10px 0 0 0;
+    }
+    
+    .header__top {
+        flex-direction: column;
+        gap: 10px;
+        padding-bottom: 10px;
+    }
+    
+    .logo {
+        font-size: 2rem;
+        text-align: center;
+    }
+    
+    .header__phone {
+        display: none; /* Прячем телефон на мобильных */
+    }
+    
+    .search-box--large {
+        width: 100%;
+    }
+    
+    .header__bottom {
+        padding: 15px 0;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+        border-top: 2px solid var(--color-border);
+        background: white;
+    }
+    
+    .header__bottom .container {
+        padding: 0 15px;
+    }
+    
+    .header__bottom .nav {
+        width: 100%;
+    }
+    
+    .nav__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 5px;
+        width: 100%;
+    }
+    
+    .nav__item {
+        flex: 0 1 auto;
+        min-width: 60px;
+    }
+    
+    /* Стили для кнопок с иконками и подписями */
+    .nav__link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        font-size: 0.7rem;
+        text-transform: none;
+        letter-spacing: normal;
+        gap: 4px;
+        padding: 5px 0;
+        white-space: normal;
+        line-height: 1.2;
+    }
+    
+    /* Иконки для навигации */
+    .nav__link::before {
+        font-size: 1.3rem;
+        margin-bottom: 2px;
+    }
+    
+    .nav__item--dropdown .nav__link::before {
+        content: "📋";
+    }
+    
+    .nav__item:nth-child(2) .nav__link::before {
+        content: "🍷";
+    }
+    
+    .nav__item:nth-child(3) .nav__link::before {
+        content: "🥂";
+    }
+    
+    .nav__item:nth-child(4) .nav__link::before {
+        content: "🥃";
+    }
+    
+    .nav__item:nth-child(5) .nav__link::before {
+        content: "📝";
+    }
+    
+    .nav__link--sale::before {
+        content: "🏷️";
+    }
+    
+    /* Убираем выпадающее меню на мобильных */
+    .dropdown {
+        display: none !important;
+    }
+    
+    .nav__item--dropdown:hover .dropdown {
+        display: none !important;
+    }
+    
+    /* Адаптация баннера */
+    .featured-banner__container {
+        padding: 30px 20px;
+    }
+    
+    .featured-banner__title {
+        font-size: 1.6rem;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media screen and (max-width: 480px) {
+    .nav__list {
+        gap: 2px;
+    }
+    
+    .nav__item {
+        min-width: 50px;
+    }
+    
+    .nav__link {
+        font-size: 0.6rem;
+    }
+    
+    .nav__link::before {
+        font-size: 1.2rem;
+    }
+}
+
 /* ===== ФУТЕР ===== */
 .footer {
     background-color: var(--color-bg-light);
