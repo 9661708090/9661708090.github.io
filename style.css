@@ -331,7 +331,7 @@ body {
     letter-spacing: -0.02em;
 }
 
-/* ===== ХЕДЕР ===== */
+/* ===== ХЕДЕР (дубль) ===== */
 .header {
     padding: 20px 0;
     border-bottom: 1px solid var(--color-border);
@@ -593,23 +593,18 @@ body {
     border-color: var(--color-accent-wine);
 }
 
-/* ===== НОВИНКА (БАННЕР) ===== */
+/* ===== БАННЕР (доработка) ===== */
 .featured-banner {
+    background: linear-gradient(135deg, #1A1F2E 0%, #2a2f40 100%);
+    color: white;
+    padding: 60px 0;
     margin: 40px 0;
-    width: 100%;
 }
 
 .featured-banner__container {
-    background: linear-gradient(135deg, #1A1F2E 0%, #2a2f40 100%);
-    color: white;
-    padding: 60px;
-    border-radius: 20px; /* Добавил скругление, но вы можете убрать */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1280px; /* Та же максимальная ширина, что и у хедера */
-    margin: 0 auto;
-    width: calc(100% - 60px); /* Учитывает padding контейнера */
 }
 
 .featured-banner__content {
@@ -620,23 +615,29 @@ body {
     color: var(--color-accent-whisky);
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     margin-bottom: 15px;
 }
 
 .featured-banner__title {
-    font-size: 2.8rem;
+    font-size: 2.2rem;
     font-weight: 500;
+    margin-bottom: 15px;
     line-height: 1.2;
-    margin-bottom: 20px;
+}
+
+.featured-banner__subtitle {
+    font-size: 1rem;
+    opacity: 0.8;
+    margin-bottom: 25px;
 }
 
 .featured-banner__btn {
     background: transparent;
     border: 1px solid white;
     color: white;
-    padding: 12px 40px;
-    font-size: 1rem;
+    padding: 12px 30px;
+    font-size: 0.95rem;
     cursor: pointer;
     transition: all 0.2s;
 }
@@ -644,20 +645,6 @@ body {
 .featured-banner__btn:hover {
     background: white;
     color: #1A1F2E;
-}
-
-/* Для мобильных */
-@media screen and (max-width: 768px) {
-    .featured-banner__container {
-        flex-direction: column;
-        text-align: center;
-        gap: 30px;
-        padding: 40px 30px;
-    }
-    
-    .featured-banner__title {
-        font-size: 2.2rem;
-    }
 }
 
 /* ===== ФУТЕР ===== */
@@ -961,60 +948,6 @@ body {
 
 .product-card__btn:hover {
     background-color: #6e2323;
-}
-
-/* ===== БАННЕР (доработка) ===== */
-.featured-banner {
-    background: linear-gradient(135deg, #1A1F2E 0%, #2a2f40 100%);
-    color: white;
-    padding: 60px 0;
-    margin: 40px 0;
-}
-
-.featured-banner__container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.featured-banner__content {
-    max-width: 500px;
-}
-
-.featured-banner__label {
-    color: var(--color-accent-whisky);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.8rem;
-    margin-bottom: 15px;
-}
-
-.featured-banner__title {
-    font-size: 2.2rem;
-    font-weight: 500;
-    margin-bottom: 15px;
-    line-height: 1.2;
-}
-
-.featured-banner__subtitle {
-    font-size: 1rem;
-    opacity: 0.8;
-    margin-bottom: 25px;
-}
-
-.featured-banner__btn {
-    background: transparent;
-    border: 1px solid white;
-    color: white;
-    padding: 12px 30px;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.featured-banner__btn:hover {
-    background: white;
-    color: #1A1F2E;
 }
 
 /* ===== ФУТЕР (доработка) ===== */
