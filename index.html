@@ -37,25 +37,16 @@
                 <li class="nav__item"><a href="blog.html" class="nav__link">Блог</a></li>
             </ul>
         </nav>
-        
-        <div class="header__actions">
-            <!-- Поиск как на winestate.ru - только иконка -->
-            <button class="search-toggle" id="searchToggle">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+
+        <!-- Поле поиска (всегда видимое, как вы хотите) -->
+        <div class="search-box">
+            <input type="text" class="search-box__input" placeholder="Поиск по каталогу...">
+            <button class="search-box__btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
             </button>
-        </div>
-    </div>
-    
-    <!-- Выпадающее поле поиска (скрыто по умолчанию) -->
-    <div class="search-overlay" id="searchOverlay">
-        <div class="container">
-            <div class="search-overlay__inner">
-                <input type="text" class="search-overlay__input" placeholder="Поиск по каталогу...">
-                <button class="search-overlay__close" id="searchClose">✕</button>
-            </div>
         </div>
     </div>
 </header>
