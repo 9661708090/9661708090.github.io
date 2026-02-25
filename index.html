@@ -18,8 +18,8 @@
         <nav class="nav">
             <ul class="nav__list">
                 <li class="nav__item nav__item--dropdown">
-                    <a href="#" class="nav__link">Каталог ▼</a>
-                    <ul class="dropdown">
+                    <button class="nav__link nav__link--dropdown" id="catalogToggle">Каталог ▼</button>
+                    <ul class="dropdown" id="catalogDropdown">
                         <li><a href="catalog.html?category=wine">Вино</a></li>
                         <li><a href="catalog.html?category=champagne">Шампанское и игристое</a></li>
                         <li><a href="catalog.html?category=spirits">Крепкие напитки</a></li>
@@ -302,5 +302,36 @@
 
     <!-- Для отладки добавьте эту кнопку (временно) -->
     <!-- <button onclick="localStorage.removeItem('ageConfirmed'); location.reload();" style="position:fixed; bottom:10px; left:10px; z-index:10000;">Сбросить проверку возраста</button> -->
+    <script>
+    // Выпадающее меню "Каталог"
+    document.addEventListener('DOMContentLoaded', function() {
+        const catalogToggle = document.getElementById('catalogToggle');
+        const catalogDropdown = document.getElementById('catalogDropdown');
+        
+        if (catalogToggle && catalogDropdown) {
+            catalogToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                catalogDropdown.classList.toggle('show');
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (!catalogToggle.contains(e.target) && !catalogDropdown.contains(e.target)) {
+                    catalogDropdown.classList.remove('show');
+                }
+            });
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && catalogDropdown.classList.contains('show')) {
+                    catalogDropdown.classList.remove('show');
+                }
+            });
+            
+            catalogDropdown.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+    });
+</script>
 </body>
 </html>
