@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wine&Whisky - Премиальная винотека</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+            font-family: 'Inter', sans-serif; 
             background: #FAFAFA; 
             color: #1A1A1A; 
             line-height: 1.6;
-            min-height: 100vh;
         }
 
         /* Возрастное окно */
         .age-gate {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100vh;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
             background: linear-gradient(135deg, #f8f9fa, #e9ecef);
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             text-align: center; padding: 40px 20px; z-index: 10000;
@@ -28,163 +28,109 @@
         .age-gate p { font-size: clamp(1.1em, 4.5vw, 1.3em); max-width: 600px; margin-bottom: 40px; color: #666; }
         .age-buttons { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
         .age-btn { 
-            padding: 16px 32px; 
-            border: 2px solid #00C4B4; 
-            background: white; 
-            color: #00C4B4; 
-            font-family: inherit; 
-            font-size: 1.1em; 
-            font-weight: 500;
-            border-radius: 12px; 
-            cursor: pointer; 
-            transition: all 0.3s ease;
+            padding: 16px 32px; border: 2px solid #00C4B4; background: white; color: #00C4B4; 
+            font-weight: 500; border-radius: 12px; cursor: pointer; transition: all 0.3s ease;
             min-width: 200px;
         }
         .age-btn:hover { background: #00C4B4; color: white; transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,196,180,0.3); }
         .age-btn.deny { border-color: #DEE2E6; color: #666; }
         .age-btn.deny:hover { background: #DEE2E6; color: #1A1A1A; }
 
-        /* Основной контент */
         .main-content { opacity: 0; transition: opacity 0.5s ease; }
         .main-content.show { opacity: 1; }
 
         /* Header */
         header { 
-            background: white; 
-            padding: 20px 40px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center;
-            position: sticky; top: 0; z-index: 100;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            background: white; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 20px rgba(0,0,0,0.08);
         }
         .logo { 
-            font-size: clamp(1.5em, 5vw, 2.2em); 
-            font-weight: 700; 
-            color: #1A1A1A;
-            letter-spacing: -0.5px;
+            font-size: clamp(1.5em, 5vw, 2.2em); font-weight: 700; color: #1A1A1A; 
+            background: linear-gradient(135deg, #00C4B4, #FF6B35); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
         .nav-toggle { display: none; flex-direction: column; cursor: pointer; gap: 4px; }
         .nav-toggle span { width: 25px; height: 3px; background: #1A1A1A; border-radius: 2px; transition: 0.3s; }
-        nav ul { list-style: none; display: flex; gap: 30px; margin: 0; padding: 0; }
-        nav a { color: #666; text-decoration: none; font-size: 1em; font-weight: 500; padding: 10px 0; position: relative; transition: all 0.3s; }
+        nav ul { list-style: none; display: flex; gap: 30px; }
+        nav a { color: #666; text-decoration: none; font-weight: 500; padding: 10px 0; position: relative; transition: all 0.3s; }
         nav a:hover { color: #00C4B4; }
         nav a:hover::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: #00C4B4; }
 
-        /* Search */
+        /* Поиск */
         .search-bar { 
-            background: white; 
-            padding: 20px 40px; 
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            border-bottom: 1px solid #E9ECEF;
+            background: white; padding: 30px 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border-bottom: 1px solid #E9ECEF;
         }
         .search-input { 
-            max-width: 500px; 
-            width: 100%; 
-            padding: 16px 20px; 
-            border: 2px solid #E9ECEF; 
-            border-radius: 50px; 
-            font-size: 1.1em; 
-            outline: none; 
-            transition: all 0.3s;
+            width: 100%; max-width: 600px; margin: 0 auto; display: block;
+            padding: 18px 25px; border: 2px solid #E9ECEF; border-radius: 50px; font-size: 1.1em; 
+            background: #F8F9FA; transition: all 0.3s; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='m11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a.5.5 0 0 0 .708-.708l-3.66-3.646zM8 4.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: 20px center;
         }
-        .search-input:focus { border-color: #00C4B4; box-shadow: 0 0 0 4px rgba(0,196,180,0.1); }
+        .search-input:focus { border-color: #00C4B4; background: white; box-shadow: 0 0 0 4px rgba(0,196,180,0.1); outline: none; }
 
-        /* Filters */
+        /* Фильтры */
         .filters { 
-            background: white; 
-            padding: 25px 40px; 
-            display: flex; 
-            gap: 20px; 
-            overflow-x: auto; 
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            background: white; padding: 25px 40px; display: flex; gap: 15px; overflow-x: auto; 
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05); scrollbar-width: none; -ms-overflow-style: none;
         }
+        .filters::-webkit-scrollbar { display: none; }
         .filter-btn { 
-            padding: 10px 20px; 
-            background: #F8F9FA; 
-            color: #666; 
-            border: none; 
-            border-radius: 25px; 
-            font-size: 0.95em; 
-            font-weight: 500; 
-            cursor: pointer; 
-            white-space: nowrap;
-            transition: all 0.3s;
+            padding: 12px 24px; background: #F8F9FA; color: #666; border: none; border-radius: 25px; 
+            font-size: 0.95em; font-weight: 500; cursor: pointer; white-space: nowrap; transition: all 0.3s;
+            border: 2px solid transparent;
         }
-        .filter-btn.active, .filter-btn:hover { background: #00C4B4; color: white; }
+        .filter-btn.active, .filter-btn:hover { background: #00C4B4; color: white; border-color: #00C4B4; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,196,180,0.3); }
 
-        /* Hero Banner */
+        /* Баннер */
         .hero-banner { 
-            background: linear-gradient(135deg, #FF6B35, #F7931E); 
-            height: 300px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            text-align: center; 
-            color: white; 
-            font-size: 2.5em; 
-            font-weight: 700; 
-            margin: 20px 40px; 
-            border-radius: 20px; 
-            box-shadow: 0 15px 40px rgba(255,107,53,0.4);
-            position: relative; 
-            overflow: hidden;
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 50%, #F6AD2A 100%); 
+            height: 320px; display: flex; align-items: center; justify-content: center; text-align: center; 
+            color: white; font-size: clamp(2em, 8vw, 3.5em); font-weight: 800; letter-spacing: 2px;
+            margin: 30px 40px; border-radius: 25px; box-shadow: 0 20px 60px rgba(255,107,53,0.4);
+            position: relative; overflow: hidden;
         }
         .hero-banner::before { 
-            content: ''; 
-            position: absolute; 
-            top: 0; left: 0; 
-            right: 0; bottom: 0; 
-            background: url('https://via.placeholder.com/1920x300/FF6B35/FFFFFF?text=Фрукты+и+вино') center/cover; 
-            opacity: 0.3; 
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; 
+            background: url('https://images.unsplash.com/photo-1551028719-00167b16eac5?w=1920&h=320&fit=crop') center/cover; 
+            opacity: 0.2; 
         }
 
-        /* Catalog */
-        .catalog { max-width: 1400px; margin: 40px auto; padding: 0 40px; }
-        .catalog h2 { text-align: center; font-size: clamp(2em, 6vw, 3em); margin-bottom: 40px; color: #1A1A1A; font-weight: 700; }
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+        /* Каталог */
+        .catalog { max-width: 1400px; margin: 50px auto; padding: 0 40px; }
+        .catalog h2 { text-align: center; font-size: clamp(2.2em, 7vw, 3.5em); margin-bottom: 50px; color: #1A1A1A; font-weight: 800; position: relative; }
+        .catalog h2::after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: linear-gradient(90deg, #00C4B4, #FF6B35); border-radius: 2px; }
+        
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
         .product { 
-            background: white; 
-            border-radius: 20px; 
-            overflow: hidden; 
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08); 
-            transition: all 0.4s ease;
+            background: white; border-radius: 25px; overflow: hidden; box-shadow: 0 15px 50px rgba(0,0,0,0.08); 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .product:hover { 
-            transform: translateY(-10px); 
-            box-shadow: 0 25px 60px rgba(0,0,0,0.15); 
+        .product:hover { transform: translateY(-15px) scale(1.02); box-shadow: 0 35px 80px rgba(0,0,0,0.15); }
+        .product img { width: 100%; height: 340px; object-fit: cover; transition: transform 0.4s ease; }
+        .product:hover img { transform: scale(1.05); }
+        .product-info { padding: 30px; position: relative; }
+        .favorite { 
+            position: absolute; top: 20px; right: 20px; color: #FFEB3B; font-size: 1.4em; cursor: pointer; 
+            transition: all 0.3s; background: white; width: 45px; height: 45px; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
-        .product img { width: 100%; height: 300px; object-fit: cover; }
-        .product-info { padding: 25px; }
-        .product h3 { font-size: 1.3em; margin-bottom: 8px; color: #1A1A1A; font-weight: 600; }
-        .product p { color: #666; margin-bottom: 15px; font-size: 0.95em; }
-        .product-price { font-size: 1.5em; font-weight: 700; color: #00C4B4; }
-        .favorite { color: #FF6B6B; font-size: 1.3em; cursor: pointer; float: right; }
+        .favorite.liked { color: #FF6B6B; transform: scale(1.1); animation: heartPulse 0.6s ease; }
+        @keyframes heartPulse { 0%, 100% { transform: scale(1.1); } 50% { transform: scale(1.3); } }
+        .product h3 { font-size: 1.4em; margin-bottom: 10px; color: #1A1A1A; font-weight: 700; }
+        .product p { color: #666; margin-bottom: 20px; font-size: 0.98em; line-height: 1.5; }
+        .product-price { font-size: 1.7em; font-weight: 800; color: #00C4B4; }
 
         /* Footer */
-        footer { 
-            background: #1A1A1A; 
-            color: white; 
-            padding: 60px 40px 40px; 
-            text-align: center; 
-            margin-top: 80px;
-        }
+        footer { background: #1A1A1A; color: white; padding: 80px 40px 50px; text-align: center; margin-top: 100px; }
         footer p { margin-bottom: 15px; color: #CCC; }
-        footer a { color: #00C4B4; text-decoration: none; font-weight: 500; }
+        footer a { color: #00C4B4; text-decoration: none; font-weight: 600; }
 
-        /* Мобильное меню */
+        /* Мобильные стили */
         @media (max-width: 768px) {
-            header, .search-bar, .filters { padding-left: 20px; padding-right: 20px; }
+            header, .search-bar, .filters, .catalog { padding-left: 20px; padding-right: 20px; }
             .nav-toggle { display: flex; }
-            nav ul { 
-                position: fixed; top: 80px; left: 0; width: 100%; 
-                background: white; flex-direction: column; padding: 30px; 
-                transform: translateY(-100%); opacity: 0; transition: all 0.3s ease; 
-                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            }
+            nav ul { position: fixed; top: 80px; left: 0; width: 100%; background: white; flex-direction: column; padding: 30px; 
+                transform: translateY(-100%); opacity: 0; transition: all 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
             nav ul.active { transform: translateY(0); opacity: 1; }
-            .hero-banner { margin: 20px 20px; font-size: 1.8em; height: 250px; }
-            .catalog { padding: 0 20px; margin: 30px auto; }
+            .hero-banner { margin: 20px; height: 280px; }
             .age-buttons { flex-direction: column; gap: 15px; }
         }
     </style>
@@ -193,18 +139,18 @@
     <!-- Возрастная проверка -->
     <div class="age-gate" id="ageGate">
         <div class="age-gate-logo">🍷🥃</div>
-        <h2>Данный сайт содержит информацию<br>об алкогольной продукции</h2>
-        <p>В соответствии с Федеральным законом № 171-ФЗ,<br>знакомить с такой информацией могут только лица старше 18 лет.</p>
+        <h2>Данный сайт содержит информацию об алкогольной продукции</h2>
+        <p>В соответствии с Федеральным законом № 171-ФЗ, знакомить с такой информацией могут только лица старше 18 лет.</p>
         <div class="age-buttons">
             <button class="age-btn" onclick="confirmAge(true)">Мне исполнилось 18 лет</button>
             <button class="age-btn deny" onclick="confirmAge(false)">Мне нет 18 лет</button>
         </div>
     </div>
 
-    <!-- Основной контент -->
     <div class="main-content" id="mainContent">
+        <!-- Header -->
         <header>
-            <div class="logo">Wine&amp;Whisky</div>
+            <div class="logo">Wine&Whisky</div>
             <nav>
                 <ul id="nav-menu">
                     <li><a href="#catalog">Каталог</a></li>
@@ -218,50 +164,63 @@
             </div>
         </header>
 
+        <!-- Поиск -->
         <div class="search-bar">
-            <input type="text" class="search-input" placeholder="Поиск по 1000+ позиций вин и виски...">
+            <input type="text" class="search-input" id="searchInput" placeholder="Поиск по 1000+ позиций вин и виски..." onkeyup="searchProducts()">
         </div>
 
+        <!-- Фильтры -->
         <div class="filters">
-            <button class="filter-btn active">Вино</button>
-            <button class="filter-btn">Виски</button>
-            <button class="filter-btn">Напитки</button>
-            <button class="filter-btn">Крепкие</button>
-            <button class="filter-btn">Новинки</button>
-            <button class="filter-btn">Скидки</button>
+            <button class="filter-btn active" data-filter="all">Все</button>
+            <button class="filter-btn" data-filter="wine">Вино</button>
+            <button class="filter-btn" data-filter="whisky">Виски</button>
+            <button class="filter-btn" data-filter="sparkling">Игристое</button>
+            <button class="filter-btn" data-filter="new">Новинки</button>
+            <button class="filter-btn" data-filter="sale">Скидки</button>
         </div>
 
+        <!-- Баннер Мускат -->
         <div class="hero-banner">
-            Мускат
+            МУСКАТ
         </div>
 
+        <!-- Каталог -->
         <section class="catalog" id="catalog">
             <h2>Рекомендуем к дегустации</h2>
-            <div class="products-grid">
-                <div class="product">
-                    <img src="https://via.placeholder.com/280x300/F8F9FA/1A1A1A?text=Pouilly+Fumé" alt="Pouilly Fumé">
+            <div class="products-grid" id="productsGrid">
+                <div class="product" data-category="wine">
+                    <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=340&fit=crop&crop=entropy" alt="Pouilly Fumé">
                     <div class="product-info">
-                        <span class="favorite">❤️</span>
+                        <span class="favorite" onclick="toggleFavorite(this)">💛</span>
                         <h3>Pouilly Fumé</h3>
-                        <p>Франция. Sauvignon Blanc. Травы, цитрус, минеральность.</p>
+                        <p>Франция, Луара. Sauvignon Blanc. Травяные ноты, цитрус, мощная минеральность.</p>
                         <div class="product-price">2 180 ₽</div>
                     </div>
                 </div>
-                <div class="product">
-                    <img src="https://via.placeholder.com/280x300/F8F9FA/1A1A1A?text=Gianni+Sovari" alt="Gianni Sovari">
+                <div class="product" data-category="wine">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=340&fit=crop&crop=entropy" alt="Gavi">
                     <div class="product-info">
-                        <span class="favorite">❤️</span>
-                        <h3>Gianni Sovari</h3>
-                        <p>Италия. Белое сухое. Цветы, персик, свежесть.</p>
+                        <span class="favorite" onclick="toggleFavorite(this)">❤️</span>
+                        <h3>Gianni Sovari Gavi</h3>
+                        <p>Италия, Пьемонт. Белое сухое. Цветочные ароматы, персик, миндаль.</p>
                         <div class="product-price">1 824 ₽</div>
                     </div>
                 </div>
-                <div class="product">
-                    <img src="https://via.placeholder.com/280x300/F8F9FA/1A1A1A?text=BL+Wine" alt="BL Wine">
+                <div class="product" data-category="sparkling">
+                    <img src="https://images.unsplash.com/photo-1571877227019-15d9822ca3d4?w=400&h=340&fit=crop&crop=entropy" alt="Prosecco">
                     <div class="product-info">
-                        <span class="favorite">💛</span>
-                        <h3>BL Wine</h3>
-                        <p>Артезианское. Франция. Минеральное, элегантное.</p>
+                        <span class="favorite liked" onclick="toggleFavorite(this)">💛</span>
+                        <h3>Prosecco Superiore DOCG</h3>
+                        <p>Италия, Венето. Игристое. Зеленое яблоко, цитрус, цветы акaции.</p>
+                        <div class="product-price">1 950 ₽</div>
+                    </div>
+                </div>
+                <div class="product" data-category="wine">
+                    <img src="https://images.unsplash.com/photo-1551024506-0b72cbb76f75?w=400&h=340&fit=crop&crop=entropy" alt="BL Wine">
+                    <div class="product-info">
+                        <span class="favorite" onclick="toggleFavorite(this)">💛</span>
+                        <h3>BL Artisanale</h3>
+                        <p>Франция, Ардеш. Артезианское. Минеральное, элегантное, долгая послевкусие.</p>
                         <div class="product-price">2 950 ₽</div>
                     </div>
                 </div>
@@ -269,7 +228,7 @@
         </section>
 
         <footer>
-            <p>© 2026 Wine&amp;Whisky. Москва | +7 (495) 123-45-67 | info@wine-whisky.ru</p>
+            <p>© 2026 Wine&Whisky. Москва | +7 (495) 123-45-67 | info@wine-whisky.ru</p>
             <p>Винотеки: Куркино, Зюзино, Мансuroвский | Политика конфиденциальности</p>
         </footer>
     </div>
@@ -277,10 +236,7 @@
     <script>
         function confirmAge(isAdult) {
             if (isAdult) {
-                localStorage.setItem('ageVerified', JSON.stringify({
-                    confirmed: true,
-                    date: new Date().toISOString()
-                }));
+                localStorage.setItem('ageVerified', JSON.stringify({confirmed: true, date: new Date().toISOString()}));
                 document.getElementById('ageGate').classList.add('hidden');
                 document.getElementById('mainContent').classList.add('show');
             } else {
@@ -303,6 +259,43 @@
             }
         });
 
+        // Поиск
+        function searchProducts() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const products = document.querySelectorAll('.product');
+            products.forEach(product => {
+                const text = product.textContent.toLowerCase();
+                product.style.display = text.includes(query) ? 'block' : 'none';
+            });
+        }
+
+        // Фильтры
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                const products = document.querySelectorAll('.product');
+                
+                products.forEach(product => {
+                    if (filter === 'all' || product.dataset.category === filter) {
+                        product.style.display = 'block';
+                        product.style.transform = 'scale(0.95)';
+                        setTimeout(() => product.style.transform = 'scale(1)', 150);
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Избранное
+        function toggleFavorite(el) {
+            el.classList.toggle('liked');
+        }
+
+        // Мобильное меню
         function toggleMenu() {
             document.getElementById('nav-menu').classList.toggle('active');
         }
