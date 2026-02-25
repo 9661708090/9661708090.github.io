@@ -595,7 +595,7 @@ body {
 
 /* ===== БАННЕР НОВИНКИ ===== */
 .featured-banner {
-    margin: 40px 0;
+    margin: 50px 0;
     width: 100%;
 }
 
@@ -608,12 +608,13 @@ body {
 .featured-banner__container {
     background: linear-gradient(135deg, #1A1F2E 0%, #2a2f40 100%);
     color: white;
-    padding: 60px;
+    padding: 70px 60px; /* Увеличена высота (было 60px, стало 70px — примерно +15%) */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: 0; /* Уберите если не нужно */
-    width: 100%; /* Занимает всю ширину родительского container */
+    border-radius: 25px; /* Плавные скругленные углы */
+    width: 100%;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Легкая тень для глубины */
 }
 
 .featured-banner__content {
@@ -624,38 +625,107 @@ body {
     color: var(--color-accent-whisky);
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     margin-bottom: 15px;
+    font-weight: 500;
 }
 
 .featured-banner__title {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     font-weight: 500;
     margin-bottom: 15px;
     line-height: 1.2;
 }
 
 .featured-banner__subtitle {
-    font-size: 1rem;
-    opacity: 0.8;
+    font-size: 1.05rem;
+    opacity: 0.9;
     margin-bottom: 25px;
+    color: rgba(255, 255, 255, 0.85);
 }
 
 .featured-banner__btn {
     background: transparent;
-    border: 1px solid white;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
     color: white;
-    padding: 12px 30px;
-    font-size: 0.95rem;
+    padding: 14px 35px; /* Чуть крупнее кнопка */
+    font-size: 1rem;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
+    border-radius: 8px; /* Скругление кнопки */
+    letter-spacing: 0.5px;
+    font-weight: 500;
 }
 
 .featured-banner__btn:hover {
     background: white;
     color: #1A1F2E;
+    border-color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+.featured-banner__image {
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+/* Адаптивность */
+@media screen and (max-width: 992px) {
+    .featured-banner__container {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+        padding: 60px 40px; /* Сохраняем пропорции на планшетах */
+    }
+    
+    .featured-banner__title {
+        font-size: 2.2rem;
+    }
+    
+    .featured-banner__image {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .featured-banner__container {
+        padding: 50px 30px;
+        border-radius: 20px;
+    }
+    
+    .featured-banner__title {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .featured-banner__container {
+        padding: 40px 20px;
+        border-radius: 16px;
+    }
+    
+    .featured-banner__title {
+        font-size: 1.8rem;
+    }
+    
+    .featured-banner__btn {
+        width: 100%;
+    }
+    
+    .featured-banner__image {
+        width: 150px;
+        height: 150px;
+    }
+}
 /* ===== ФУТЕР ===== */
 .footer {
     background-color: var(--color-bg-light);
