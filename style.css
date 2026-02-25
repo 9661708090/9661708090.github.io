@@ -469,3 +469,356 @@ body {
         font-size: 1.8rem;
     }
 }
+
+/* ===== ВЫПАДАЮЩЕЕ МЕНЮ ===== */
+.nav__item--dropdown {
+    position: relative;
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 10px 0;
+    min-width: 220px;
+    display: none;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.nav__item--dropdown:hover .dropdown {
+    display: block;
+}
+
+.dropdown li {
+    list-style: none;
+}
+
+.dropdown a {
+    display: block;
+    padding: 8px 20px;
+    text-decoration: none;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+
+.dropdown a:hover {
+    background: var(--color-bg-light);
+    color: var(--color-accent-wine);
+}
+
+.dropdown .sale-link {
+    color: var(--color-accent-wine);
+    font-weight: 500;
+}
+
+/* ===== ПОИСК ===== */
+.search-btn {
+    background: none;
+    border: 1px solid var(--color-border);
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.search-btn:hover {
+    border-color: var(--color-accent-wine);
+    color: var(--color-accent-wine);
+}
+
+/* ===== СЕКЦИИ НА ГЛАВНОЙ ===== */
+.popular,
+.discounts {
+    padding: 60px 0;
+}
+
+.discounts {
+    background-color: var(--color-bg-light);
+}
+
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 30px;
+    letter-spacing: -0.02em;
+}
+
+.section-footer {
+    text-align: right;
+    margin-top: 30px;
+}
+
+.link-all {
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.link-all:hover {
+    color: var(--color-accent-wine);
+}
+
+/* ===== КАРТОЧКА ТОВАРА (доработка) ===== */
+.product-card {
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.product-card__sku {
+    color: var(--color-accent-wine);
+    font-size: 0.75rem;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.product-card__title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.product-card__subtitle {
+    color: var(--color-text-secondary);
+    font-size: 0.8rem;
+    margin-bottom: 12px;
+}
+
+.product-card__rating {
+    color: var(--color-accent-whisky);
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.product-card__price {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin: 15px 0;
+}
+
+.old-price {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    text-decoration: line-through;
+    margin-right: 10px;
+}
+
+.new-price {
+    color: var(--color-accent-wine);
+    font-size: 1.3rem;
+}
+
+.product-card__badge {
+    display: inline-block;
+    padding: 4px 8px;
+    background-color: var(--color-accent-wine);
+    color: white;
+    font-size: 0.7rem;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+
+.product-card__btn {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--color-accent-wine);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.product-card__btn:hover {
+    background-color: #6e2323;
+}
+
+/* ===== БАННЕР (доработка) ===== */
+.featured-banner {
+    background: linear-gradient(135deg, #1A1F2E 0%, #2a2f40 100%);
+    color: white;
+    padding: 60px 0;
+    margin: 40px 0;
+}
+
+.featured-banner__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.featured-banner__content {
+    max-width: 500px;
+}
+
+.featured-banner__label {
+    color: var(--color-accent-whisky);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+}
+
+.featured-banner__title {
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.featured-banner__subtitle {
+    font-size: 1rem;
+    opacity: 0.8;
+    margin-bottom: 25px;
+}
+
+.featured-banner__btn {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 12px 30px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.featured-banner__btn:hover {
+    background: white;
+    color: #1A1F2E;
+}
+
+/* ===== ФУТЕР (доработка) ===== */
+.footer {
+    background-color: var(--color-bg-light);
+    padding: 60px 0 30px;
+    border-top: 1px solid var(--color-border);
+}
+
+.footer__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer__col-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.footer__links {
+    list-style: none;
+}
+
+.footer__links li {
+    margin-bottom: 12px;
+}
+
+.footer__links a {
+    text-decoration: none;
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+    transition: color 0.2s;
+}
+
+.footer__links a:hover {
+    color: var(--color-accent-wine);
+}
+
+.footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+}
+
+.footer__bottom-links {
+    display: flex;
+    gap: 30px;
+}
+
+.footer__bottom-links a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+}
+
+.footer__bottom-links a:hover {
+    color: var(--color-accent-wine);
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+@media screen and (max-width: 992px) {
+    .featured-banner__container {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header__container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav__list {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .footer__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer__bottom {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .footer__bottom-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer__grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .featured-banner__title {
+        font-size: 1.8rem;
+    }
+}
