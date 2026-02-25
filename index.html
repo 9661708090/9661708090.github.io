@@ -190,7 +190,7 @@
             <h2>Рекомендуем к дегустации</h2>
             <div class="products-grid" id="productsGrid">
                 <div class="product" data-category="whisky">
-                    <img src="images/lagavulin_small.jpg" alt="Рислинг">
+                    <img src="images/lagavulin_small.jpg" alt="Peter Mertes Riesling - немецкое белое вино">
                     <div class="product-info">
                         <span class="favorite" onclick="toggleFavorite(this)">💛</span>
                         <h3>Peter Mertes Gold Edition Riesling Kabinett Dry</h3>
@@ -237,20 +237,19 @@
     <script>
         function confirmAge(isAdult) {
             if (isAdult) {
-            localStorage.setItem('ageVerified', 'true');
-            document.getElementById('ageGate').style.display = 'none';
-            document.getElementById('mainContent').style.opacity = '1';
-
-        } else {
-            window.location.href = 'https://www.google.ru/search?q=безалкогольные+напитки';
+                localStorage.setItem('ageVerified', 'true');
+                document.getElementById('ageGate').classList.add('hidden');
+                document.getElementById('mainContent').classList.add('show');
+            } else {
+                window.location.href = 'https://www.google.com/search?q=безалкогольные+напитки';
+            }
         }
-    }
 
 
         window.addEventListener('DOMContentLoaded', function() {
     if (localStorage.getItem('ageVerified') === 'true') {
-        document.getElementById('ageGate').style.display = 'none';
-        document.getElementById('mainContent').style.opacity = '1';
+        document.getElementById('ageGate').classList.add('hidden');
+        document.getElementById('mainContent').classList.add('show');
     }
 });
 
@@ -259,10 +258,18 @@
         function searchProducts() {
             const query = document.getElementById('searchInput').value.toLowerCase();
             const products = document.querySelectorAll('.product');
+            const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+            
             products.forEach(product => {
                 const text = product.textContent.toLowerCase();
-                product.style.display = text.includes(query) ? 'block' : 'none';
+                const matchesSearch = text.includes(query);
+                const matchesFilter = activeFilter === 'all' || product.dataset.category === activeFilter;
+                
+                product.style.display = (matchesSearch && matchesFilter) ? 'block' : 'none';
             });
+            
+            // Добавить проверку на пустой результат
+            checkNoResults();
         }
 
         // Фильтры
@@ -273,9 +280,13 @@
                 
                 const filter = btn.dataset.filter;
                 const products = document.querySelectorAll('.product');
+                const searchQuery = document.getElementById('searchInput').value.toLowerCase();
                 
                 products.forEach(product => {
-                    if (filter === 'all' || product.dataset.category === filter) {
+                    const matchesFilter = filter === 'all' || product.dataset.category === filter;
+                    const matchesSearch = product.textContent.toLowerCase().includes(searchQuery);
+                    
+                    if (matchesFilter && matchesSearch) {
                         product.style.display = 'block';
                         product.style.transform = 'scale(0.95)';
                         setTimeout(() => product.style.transform = 'scale(1)', 150);
@@ -283,8 +294,9 @@
                         product.style.display = 'none';
                     }
                 });
+                
+                checkNoResults(); // Проверка пустого результата
             });
-        });
 
         // Избранное
         function toggleFavorite(el) {
@@ -301,6 +313,22 @@
                 document.getElementById('nav-menu').classList.remove('active');
             });
         });
+            function checkNoResults() {
+    const products = document.querySelectorAll('.product');
+    const visibleProducts = Array.from(products).filter(p => p.style.display !== 'none');
+    
+    // Создать или найти сообщение о пустом результате
+    let noResults = document.querySelector('.no-results-message');
+    if (!noResults) {
+        noResults = document.createElement('div');
+        noResults.className = 'no-results-message';
+        noResults.style.cssText = 'text-align: center; padding: 50px; font-size: 1.2em; color: #666; display: none;';
+        noResults.textContent = 'По вашему запросу ничего не найдено';
+        document.getElementById('productsGrid').after(noResults);
+    }
+    
+    noResults.style.display = visibleProducts.length === 0 ? 'block' : 'none';
+}
     </script>
 </body>
 </html>
