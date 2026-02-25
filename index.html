@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог — Wine & Whisky</title>
+    <title>Wine & Whisky — Винотека</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,102 +13,83 @@
                 <span class="logo__wine">Wine</span><span class="logo__ampersand"> & </span><span class="logo__whisky">Whisky</span>
             </a>
             
+            <!-- Добавляем выпадающее меню "Каталог" -->
             <nav class="nav">
                 <ul class="nav__list">
-                    <li class="nav__item"><a href="index.html" class="nav__link">Главная</a></li>
-                    <li class="nav__item"><a href="catalog.html" class="nav__link active">Каталог</a></li>
+                    <li class="nav__item nav__item--dropdown">
+                        <a href="#" class="nav__link">Каталог ▼</a>
+                        <ul class="dropdown">
+                            <li><a href="catalog.html?category=wine">Вино</a></li>
+                            <li><a href="catalog.html?category=champagne">Шампанское и игристое</a></li>
+                            <li><a href="catalog.html?category=spirits">Крепкие напитки</a></li>
+                            <li><a href="catalog.html?category=sherry">Херес</a></li>
+                            <li><a href="catalog.html?category=vermouth">Вермут</a></li>
+                            <li><a href="catalog.html?category=beer">Пиво</a></li>
+                            <li><a href="catalog.html?category=food">Продукты</a></li>
+                            <li><a href="catalog.html?category=accessories">Аксессуары</a></li>
+                            <li><a href="catalog.html?category=sale" class="sale-link">Акции</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav__item"><a href="catalog.html" class="nav__link">Вино</a></li>
+                    <li class="nav__item"><a href="catalog.html" class="nav__link">Шампанское</a></li>
+                    <li class="nav__item"><a href="catalog.html" class="nav__link">Крепкие напитки</a></li>
                     <li class="nav__item"><a href="blog.html" class="nav__link">Блог</a></li>
-                    <li class="nav__item"><a href="contacts.html" class="nav__link">Контакты</a></li>
                 </ul>
             </nav>
             
             <div class="header__actions">
-                <button class="search-btn">🔍</button>
+                <!-- Добавляем поиск как в cavina -->
+                <button class="search-btn">🔍 Поиск</button>
             </div>
         </div>
     </header>
 
     <main class="main">
-        <!-- Баннер новинки (как в референсе) -->
+        <!-- Hero секция (была) -->
+        <section class="hero">
+            <div class="container hero__container">
+                <h1 class="hero__title">Винотека <br> Wine & Whisky</h1>
+                <p class="hero__subtitle">Минимализм в каждой капле. Изысканные вкусы со всего света.</p>
+                <a href="catalog.html" class="btn btn--primary">Перейти в каталог</a>
+            </div>
+        </section>
+
+        <!-- Баннер новинки (как в cavina) -->
         <section class="featured-banner">
             <div class="container featured-banner__container">
                 <div class="featured-banner__content">
                     <div class="featured-banner__label">НОВИНКА ИЗ БУРГУНДИИ!</div>
-                    <h2 class="featured-banner__title">Откройте для себя элегантность</h2>
+                    <h2 class="featured-banner__title">Domaine de la Vougeraie</h2>
+                    <p class="featured-banner__subtitle">Престижное бургундское от известного производителя</p>
                     <button class="featured-banner__btn">Смотреть новинки</button>
                 </div>
                 <div class="featured-banner__image">
-                    <!-- Здесь можно добавить изображение бутылки -->
+                    <!-- Здесь будет изображение бутылки -->
                 </div>
             </div>
         </section>
 
-        <!-- Каталог -->
-        <section class="catalog">
+        <!-- Популярное (как в референсе) -->
+        <section class="popular">
             <div class="container">
-                <div class="catalog__header">
-                    <div class="breadcrumbs">
-                        <a href="index.html">Главная</a> / <span>Каталог</span>
-                    </div>
-                    <h1 class="catalog__title">Каталог вин и виски</h1>
-                    
-                    <div class="catalog__filters">
-                        <button class="filter-btn active">Все</button>
-                        <button class="filter-btn">Вино</button>
-                        <button class="filter-btn">Шампанское</button>
-                        <button class="filter-btn">Виски</button>
-                        <button class="filter-btn">Крепкие напитки</button>
-                        <button class="filter-btn">Аксессуары</button>
-                        <button class="filter-btn">Акции</button>
-                    </div>
-                </div>
-
-                <!-- Сетка товаров -->
+                <h2 class="section-title">Популярное</h2>
+                
                 <div class="products-grid">
-                    <!-- Карточка 1 (новинка) -->
+                    <!-- Карточка 1 -->
                     <div class="product-card">
-                        <span class="product-card__badge">Новинка</span>
                         <div class="product-card__sku">Артикул 001982</div>
-                        <h3 class="product-card__title">HAUT POITOU LE FIE GRIS</h3>
-                        <div class="product-card__subtitle">Франция, Белое, Сухое, Долина Луары</div>
-                        <div class="product-card__details">
-                            <div class="product-detail">
-                                <span class="product-detail__label">Объем:</span>
-                                <span class="product-detail__value">0,75 л</span>
-                            </div>
-                            <div class="product-detail">
-                                <span class="product-detail__label">Год:</span>
-                                <span class="product-detail__value">2024</span>
-                            </div>
-                        </div>
-                        <div class="product-card__rating">
-                            <span>★★★★☆</span>
-                            <span>4.2 Vivino</span>
-                        </div>
+                        <h3 class="product-card__title">ВИНО HAUT POITOU LE FIE GRIS</h3>
+                        <div class="product-card__subtitle">Франция, Белое, Сухое, Долина Луары, 0,75 л, 2024</div>
                         <div class="product-card__price">2 970 ₽</div>
                         <button class="product-card__btn">В корзину</button>
                     </div>
 
-                    <!-- Карточка 2 (со скидкой) -->
+                    <!-- Карточка 2 -->
                     <div class="product-card">
-                        <span class="product-card__badge">Скидка</span>
                         <div class="product-card__sku">Артикул 001824</div>
-                        <h3 class="product-card__title">SOAVE GIANNITESSARI</h3>
-                        <div class="product-card__subtitle">Италия, Белое, Сухое, Венето</div>
-                        <div class="product-card__details">
-                            <div class="product-detail">
-                                <span class="product-detail__label">Объем:</span>
-                                <span class="product-detail__value">0,75 л</span>
-                            </div>
-                            <div class="product-detail">
-                                <span class="product-detail__label">Год:</span>
-                                <span class="product-detail__value">2024</span>
-                            </div>
-                        </div>
-                        <div class="product-card__rating">
-                            <span>★★★★☆</span>
-                            <span>3.8 Vivino</span>
-                        </div>
+                        <h3 class="product-card__title">ВИНО SOAVE GIANNITESSARI</h3>
+                        <div class="product-card__subtitle">Италия, Белое, Сухое, Венето, 0,75 л, 2024</div>
+                        <div class="product-card__rating">3.8 VIVINO</div>
                         <div class="product-card__price">2 970 ₽</div>
                         <button class="product-card__btn">В корзину</button>
                     </div>
@@ -116,22 +97,8 @@
                     <!-- Карточка 3 -->
                     <div class="product-card">
                         <div class="product-card__sku">Артикул 001681</div>
-                        <h3 class="product-card__title">TAMPESTA ROSADO</h3>
-                        <div class="product-card__subtitle">Испания, Розовое, Сухое, Кастилия и Леон</div>
-                        <div class="product-card__details">
-                            <div class="product-detail">
-                                <span class="product-detail__label">Объем:</span>
-                                <span class="product-detail__value">0,75 л</span>
-                            </div>
-                            <div class="product-detail">
-                                <span class="product-detail__label">Год:</span>
-                                <span class="product-detail__value">2023</span>
-                            </div>
-                        </div>
-                        <div class="product-card__rating">
-                            <span>★★★★☆</span>
-                            <span>3.8 Vivino</span>
-                        </div>
+                        <h3 class="product-card__title">ВИНО TAMPESTA ROSADO</h3>
+                        <div class="product-card__subtitle">Испания, Розовое, Сухое, Кастилия и Леон, 0,75 л, 2023</div>
                         <div class="product-card__price">2 970 ₽</div>
                         <button class="product-card__btn">В корзину</button>
                     </div>
@@ -140,33 +107,49 @@
                     <div class="product-card">
                         <div class="product-card__sku">Артикул 002145</div>
                         <h3 class="product-card__title">GLENMORANGIE ORIGINAL</h3>
-                        <div class="product-card__subtitle">Шотландия, Односолодовый, Виски</div>
-                        <div class="product-card__details">
-                            <div class="product-detail">
-                                <span class="product-detail__label">Объем:</span>
-                                <span class="product-detail__value">0,7 л</span>
-                            </div>
-                            <div class="product-detail">
-                                <span class="product-detail__label">Выдержка:</span>
-                                <span class="product-detail__value">10 лет</span>
-                            </div>
-                        </div>
-                        <div class="product-card__rating">
-                            <span>★★★★★</span>
-                            <span>4.5 Vivino</span>
-                        </div>
+                        <div class="product-card__subtitle">Шотландия, Односолодовый виски, 0,7 л, 10 лет</div>
                         <div class="product-card__price">5 490 ₽</div>
                         <button class="product-card__btn">В корзину</button>
                     </div>
                 </div>
+                
+                <div class="section-footer">
+                    <a href="catalog.html" class="link-all">Смотреть все →</a>
+                </div>
+            </div>
+        </section>
 
-                <!-- Пагинация -->
-                <div class="pagination">
-                    <a href="#" class="pagination__link active">1</a>
-                    <a href="#" class="pagination__link">2</a>
-                    <a href="#" class="pagination__link">3</a>
-                    <a href="#" class="pagination__link">4</a>
-                    <a href="#" class="pagination__link">→</a>
+        <!-- Скидки (как в референсе) -->
+        <section class="discounts">
+            <div class="container">
+                <h2 class="section-title">Скидки</h2>
+                
+                <div class="products-grid">
+                    <!-- Карточка со скидкой -->
+                    <div class="product-card product-card--sale">
+                        <span class="product-card__badge">-15%</span>
+                        <div class="product-card__sku">Артикул 003456</div>
+                        <h3 class="product-card__title">CHÂTEAU MARGAUX</h3>
+                        <div class="product-card__subtitle">Франция, Красное, Сухое, Бордо, 0,75 л, 2018</div>
+                        <div class="product-card__price">
+                            <span class="old-price">24 990 ₽</span>
+                            <span class="new-price">21 240 ₽</span>
+                        </div>
+                        <button class="product-card__btn">В корзину</button>
+                    </div>
+
+                    <!-- Еще карточки... -->
+                    <div class="product-card product-card--sale">
+                        <span class="product-card__badge">-10%</span>
+                        <div class="product-card__sku">Артикул 003457</div>
+                        <h3 class="product-card__title">MACALLAN 12 YO</h3>
+                        <div class="product-card__subtitle">Шотландия, Односолодовый виски, 0,7 л</div>
+                        <div class="product-card__price">
+                            <span class="old-price">12 990 ₽</span>
+                            <span class="new-price">11 690 ₽</span>
+                        </div>
+                        <button class="product-card__btn">В корзину</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -210,7 +193,10 @@
             </div>
             <div class="footer__bottom">
                 <p>© 2025 Wine & Whisky. Все права защищены.</p>
-                <p>18+ Информация на сайте не является рекламой</p>
+                <div class="footer__bottom-links">
+                    <a href="#">Политика конфиденциальности</a>
+                    <a href="#">Доставка и оплата</a>
+                </div>
             </div>
         </div>
     </footer>
