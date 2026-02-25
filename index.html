@@ -253,15 +253,16 @@
     }
 
     window.addEventListener('DOMContentLoaded', function() {
-        // Для теста - всегда показываем окно
-        document.getElementById('ageGate').classList.remove('hidden');
-        document.getElementById('mainContent').classList.remove('show');
-        
-        // Раскомментируйте для production
-        // if (localStorage.getItem('ageVerified') === 'true') {
-        //     document.getElementById('ageGate').classList.add('hidden');
-        //     document.getElementById('mainContent').classList.add('show');
-        // }
+        // Проверяем, подтвержден ли возраст
+        if (localStorage.getItem('ageVerified') === 'true') {
+            // Если подтвержден — показываем контент, скрываем окно
+            document.getElementById('ageGate').classList.add('hidden');
+            document.getElementById('mainContent').classList.add('show');
+        } else {
+            // Если не подтвержден — показываем окно, скрываем контент
+            document.getElementById('ageGate').classList.remove('hidden');
+            document.getElementById('mainContent').classList.remove('show');
+        }
     });
 
     // Поиск
