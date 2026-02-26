@@ -613,6 +613,34 @@
             updateSlider();
         }, 5000);
     });
+
+    // Переключение табов в каталоге
+    document.addEventListener('DOMContentLoaded', function() {
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Убираем активный класс у всех кнопок
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Добавляем активный класс текущей кнопке
+                this.classList.add('active');
+                
+                // Получаем id таба
+                const tabId = this.getAttribute('data-tab');
+                
+                // Скрываем все табы
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Показываем нужный таб
+                const activeTab = document.getElementById(`tab-${tabId}`);
+                if (activeTab) {
+                    activeTab.classList.add('active');
+                }
+            });
+        });
+    });    
 </script>
 </body>
 </html>
