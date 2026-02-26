@@ -12,10 +12,10 @@
         <!-- Верхняя строка: логотип, поиск, телефон, иконки -->
         <div class="header__top">
             <a href="index.html" class="logo logo--image">
-                <img src="images/WW_logo.jpg" alt="Wine & Whisky" class="logo__img">
+                <img src="logo.png" alt="Wine & Whisky" class="logo__img">
             </a>
             
-            <!-- Поле поиска (в 2 раза длиннее) -->
+            <!-- Поле поиска -->
             <div class="search-box search-box--large">
                 <input type="text" class="search-box__input" placeholder="Поиск по каталогу...">
                 <button class="search-box__btn">
@@ -56,315 +56,357 @@
             </div>
         </div>
         
-            <!-- Нижняя строка: навигация -->
-            <div class="header__bottom">
-                <div class="container">
-                    <nav class="nav">
-                        <ul class="nav__list">
-                            <li class="nav__item nav__item--dropdown">
-                                <a href="#" class="nav__link" id="catalogLink">Каталог ▼</a>
-                                <ul class="dropdown" id="catalogDropdown">
-                                    <li><a href="catalog.html?category=wine">Вино</a></li>
-                                    <li><a href="catalog.html?category=champagne">Шампанское и игристое</a></li>
-                                    <li><a href="catalog.html?category=spirits">Крепкие напитки</a></li>
-                                    <li><a href="catalog.html?category=sherry">Херес</a></li>
-                                    <li><a href="catalog.html?category=vermouth">Вермут</a></li>
-                                    <li><a href="catalog.html?category=beer">Пиво</a></li>
-                                    <li><a href="catalog.html?category=food">Продукты</a></li>
-                                    <li><a href="catalog.html?category=accessories">Аксессуары</a></li>
-                                    <li><a href="catalog.html?category=sale" class="sale-link">Акции</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav__item"><a href="catalog.html?category=wine" class="nav__link">Вино</a></li>
-                            <li class="nav__item"><a href="catalog.html?category=champagne" class="nav__link">Шампанское и игристое</a></li>
-                            <li class="nav__item"><a href="catalog.html?category=spirits" class="nav__link">Крепкие напитки</a></li>
-                            <li class="nav__item"><a href="catalog.html?category=beer" class="nav__link">Пиво</a></li>
-                            <li class="nav__item"><a href="catalog.html?category=food" class="nav__link">Продукты</a></li>
-                            <li class="nav__item"><a href="catalog.html?category=sale" class="nav__link nav__link--sale">Акции</a></li>
+        <!-- Нижняя строка: навигация -->
+        <div class="header__bottom">
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item nav__item--dropdown">
+                        <a href="#" class="nav__link" id="catalogLink">Каталог ▼</a>
+                        <ul class="dropdown" id="catalogDropdown">
+                            <li><a href="catalog.html?category=wine">Вино</a></li>
+                            <li><a href="catalog.html?category=champagne">Шампанское и игристое</a></li>
+                            <li><a href="catalog.html?category=spirits">Крепкие напитки</a></li>
+                            <li><a href="catalog.html?category=sherry">Херес</a></li>
+                            <li><a href="catalog.html?category=vermouth">Вермут</a></li>
+                            <li><a href="catalog.html?category=beer">Пиво</a></li>
+                            <li><a href="catalog.html?category=food">Продукты</a></li>
+                            <li><a href="catalog.html?category=accessories">Аксессуары</a></li>
+                            <li><a href="catalog.html?category=sale" class="sale-link">Акции</a></li>
                         </ul>
-                    </nav>
-                </div>
-            </div>
+                    </li>
+                    <li class="nav__item"><a href="catalog.html?category=wine" class="nav__link">Вино</a></li>
+                    <li class="nav__item"><a href="catalog.html?category=champagne" class="nav__link">Шампанское и игристое</a></li>
+                    <li class="nav__item"><a href="catalog.html?category=spirits" class="nav__link">Крепкие напитки</a></li>
+                    <li class="nav__item"><a href="catalog.html?category=beer" class="nav__link">Пиво</a></li>
+                    <li class="nav__item"><a href="catalog.html?category=food" class="nav__link">Продукты</a></li>
+                    <li class="nav__item"><a href="catalog.html?category=sale" class="nav__link nav__link--sale">Акции</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 </header>
 
-    <main class="main">
-        <!-- Hero секция -->
-        <section class="hero">
-            <div class="container hero__container">
-                <h1 class="hero__title">Винотека <br> Wine & Whisky</h1>
-                <p class="hero__subtitle">Гедонизм в каждой капле. Изысканные вкусы со всего света.</p>
-            </div>
-        </section>
-
-        <!-- Баннер новинки -->
-        <section class="featured-banner">
-            <div class="container featured-banner__container">
-                <div class="featured-banner__content">
-                    <div class="featured-banner__label">НОВИНКА ИЗ БУРГУНДИИ!</div>
-                    <h2 class="featured-banner__title">Domaine de la Vougeraie</h2>
-                    <p class="featured-banner__subtitle">Престижное бургундское от известного производителя</p>
-                    <button class="featured-banner__btn">Смотреть новинки</button>
-                </div>
-                <div class="featured-banner__image">
-                    <!-- Здесь будет изображение бутылки -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Популярное -->
-        <section class="popular">
-            <div class="container">
-                <h2 class="section-title">Популярное</h2>
-                
-                <div class="products-grid">
-                    <!-- Карточка 1 -->
-                    <div class="product-card">
-                        <div class="product-card__sku">Артикул 001982</div>
-                        <h3 class="product-card__title">ВИНО HAUT POITOU LE FIE GRIS</h3>
-                        <div class="product-card__subtitle">Франция, Белое, Сухое, Долина Луары, 0,75 л, 2024</div>
-                        <div class="product-card__price">2 970 ₽</div>
-                        <button class="product-card__btn">В корзину</button>
-                    </div>
-
-                    <!-- Карточка 2 -->
-                    <div class="product-card">
-                        <div class="product-card__sku">Артикул 001824</div>
-                        <h3 class="product-card__title">ВИНО SOAVE GIANNITESSARI</h3>
-                        <div class="product-card__subtitle">Италия, Белое, Сухое, Венето, 0,75 л, 2024</div>
-                        <div class="product-card__rating">3.8 VIVINO</div>
-                        <div class="product-card__price">2 970 ₽</div>
-                        <button class="product-card__btn">В корзину</button>
-                    </div>
-
-                    <!-- Карточка 3 -->
-                    <div class="product-card">
-                        <div class="product-card__sku">Артикул 001681</div>
-                        <h3 class="product-card__title">ВИНО TAMPESTA ROSADO</h3>
-                        <div class="product-card__subtitle">Испания, Розовое, Сухое, Кастилия и Леон, 0,75 л, 2023</div>
-                        <div class="product-card__price">2 970 ₽</div>
-                        <button class="product-card__btn">В корзину</button>
-                    </div>
-
-                    <!-- Карточка 4 -->
-                    <div class="product-card">
-                        <div class="product-card__sku">Артикул 002145</div>
-                        <h3 class="product-card__title">GLENMORANGIE ORIGINAL</h3>
-                        <div class="product-card__subtitle">Шотландия, Односолодовый виски, 0,7 л, 10 лет</div>
-                        <div class="product-card__price">5 490 ₽</div>
-                        <button class="product-card__btn">В корзину</button>
-                    </div>
-                </div>
-                
-                <div class="section-footer">
-                    <a href="catalog.html" class="link-all">Смотреть все →</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Скидки -->
-        <section class="discounts">
-            <div class="container">
-                <h2 class="section-title">Скидки</h2>
-                
-                <div class="products-grid">
-                    <!-- Карточка со скидкой -->
-                    <div class="product-card product-card--sale">
-                        <span class="product-card__badge">-15%</span>
-                        <div class="product-card__sku">Артикул 003456</div>
-                        <h3 class="product-card__title">CHÂTEAU MARGAUX</h3>
-                        <div class="product-card__subtitle">Франция, Красное, Сухое, Бордо, 0,75 л, 2018</div>
-                        <div class="product-card__price">
-                            <span class="old-price">24 990 ₽</span>
-                            <span class="new-price">21 240 ₽</span>
+<main class="main">
+    <!-- Динамический баннер-слайдер -->
+    <section class="hero-slider">
+        <div class="slider-container">
+            <div class="slider-track" id="sliderTrack">
+                <!-- Слайд 1 -->
+                <div class="slider-slide">
+                    <a href="catalog.html?category=champagne" class="slider-link">
+                        <img src="images/slide1.jpg" alt="Шампанское" class="slider-image">
+                        <div class="slider-content">
+                            <span class="slider-label">Коллекция</span>
+                            <h2 class="slider-title">Игристое настроение</h2>
+                            <p class="slider-subtitle">Шампанское и игристые вина для особых моментов</p>
+                            <span class="slider-btn">Смотреть подборку →</span>
                         </div>
-                        <button class="product-card__btn">В корзину</button>
-                    </div>
-
-                    <div class="product-card product-card--sale">
-                        <span class="product-card__badge">-10%</span>
-                        <div class="product-card__sku">Артикул 003457</div>
-                        <h3 class="product-card__title">MACALLAN 12 YO</h3>
-                        <div class="product-card__subtitle">Шотландия, Односолодовый виски, 0,7 л</div>
-                        <div class="product-card__price">
-                            <span class="old-price">12 990 ₽</span>
-                            <span class="new-price">11 690 ₽</span>
+                    </a>
+                </div>
+                
+                <!-- Слайд 2 -->
+                <div class="slider-slide">
+                    <a href="catalog.html?category=wine&country=france" class="slider-link">
+                        <img src="images/slide2.jpg" alt="Французское вино" class="slider-image">
+                        <div class="slider-content">
+                            <span class="slider-label">Винный гид</span>
+                            <h2 class="slider-title">Французская элегантность</h2>
+                            <p class="slider-subtitle">Бордо, Бургундия, Долина Луары — лучшие аппелласьоны</p>
+                            <span class="slider-btn">Выбрать вино →</span>
                         </div>
-                        <button class="product-card__btn">В корзину</button>
-                    </div>
+                    </a>
+                </div>
+                
+                <!-- Слайд 3 -->
+                <div class="slider-slide">
+                    <a href="catalog.html?category=spirits&type=whisky" class="slider-link">
+                        <img src="images/slide3.jpg" alt="Виски" class="slider-image">
+                        <div class="slider-content">
+                            <span class="slider-label">Коллекция</span>
+                            <h2 class="slider-title">Односолодовый виски</h2>
+                            <p class="slider-subtitle">Шотландия, Ирландия, Япония — легендарные бочки</p>
+                            <span class="slider-btn">Изучить виски →</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Слайд 4 -->
+                <div class="slider-slide">
+                    <a href="catalog.html?category=wine&region=italy" class="slider-link">
+                        <img src="images/slide4.jpg" alt="Итальянское вино" class="slider-image">
+                        <div class="slider-content">
+                            <span class="slider-label">Винный гид</span>
+                            <h2 class="slider-title">Итальянская страсть</h2>
+                            <p class="slider-subtitle">Тоскана, Пьемонт, Венето — вина с характером</p>
+                            <span class="slider-btn">Открыть Италию →</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Слайд 5 -->
+                <div class="slider-slide">
+                    <a href="catalog.html?category=sale" class="slider-link">
+                        <img src="images/slide5.jpg" alt="Акции" class="slider-image">
+                        <div class="slider-content">
+                            <span class="slider-label">Специальное предложение</span>
+                            <h2 class="slider-title">Винная неделя</h2>
+                            <p class="slider-subtitle">Скидки до 25% на избранные позиции</p>
+                            <span class="slider-btn">Все акции →</span>
+                        </div>
+                    </a>
                 </div>
             </div>
-        </section>
-    </main>
+            
+            <!-- Кнопки навигации слайдера -->
+            <button class="slider-arrow slider-arrow--prev" id="sliderPrev">←</button>
+            <button class="slider-arrow slider-arrow--next" id="sliderNext">→</button>
+            
+            <!-- Индикаторы слайдов -->
+            <div class="slider-dots" id="sliderDots">
+                <span class="slider-dot active"></span>
+                <span class="slider-dot"></span>
+                <span class="slider-dot"></span>
+                <span class="slider-dot"></span>
+                <span class="slider-dot"></span>
+            </div>
+        </div>
+    </section>
 
-    <footer class="footer">
+    <!-- Популярное -->
+    <section class="popular">
         <div class="container">
-            <div class="footer__grid">
-                <div class="footer__col">
-                    <h4 class="footer__col-title">Wine & Whisky</h4>
-                    <ul class="footer__links">
-                        <li><a href="#">О нас</a></li>
-                        <li><a href="#">Блог</a></li>
-                        <li><a href="#">Контакты</a></li>
-                    </ul>
+            <h2 class="section-title">Популярное</h2>
+            
+            <div class="products-grid">
+                <!-- Карточка 1 -->
+                <div class="product-card">
+                    <div class="product-card__sku">Артикул 001982</div>
+                    <h3 class="product-card__title">ВИНО HAUT POITOU LE FIE GRIS</h3>
+                    <div class="product-card__subtitle">Франция, Белое, Сухое, Долина Луары, 0,75 л, 2024</div>
+                    <div class="product-card__price">2 970 ₽</div>
+                    <button class="product-card__btn">В корзину</button>
                 </div>
-                <div class="footer__col">
-                    <h4 class="footer__col-title">Каталог</h4>
-                    <ul class="footer__links">
-                        <li><a href="#">Вино</a></li>
-                        <li><a href="#">Шампанское</a></li>
-                        <li><a href="#">Виски</a></li>
-                        <li><a href="#">Аксессуары</a></li>
-                    </ul>
+
+                <!-- Карточка 2 -->
+                <div class="product-card">
+                    <div class="product-card__sku">Артикул 001824</div>
+                    <h3 class="product-card__title">ВИНО SOAVE GIANNITESSARI</h3>
+                    <div class="product-card__subtitle">Италия, Белое, Сухое, Венето, 0,75 л, 2024</div>
+                    <div class="product-card__rating">3.8 VIVINO</div>
+                    <div class="product-card__price">2 970 ₽</div>
+                    <button class="product-card__btn">В корзину</button>
                 </div>
-                <div class="footer__col">
-                    <h4 class="footer__col-title">Помощь</h4>
-                    <ul class="footer__links">
-                        <li><a href="#">Доставка</a></li>
-                        <li><a href="#">Оплата</a></li>
-                        <li><a href="#">Возврат</a></li>
-                    </ul>
+
+                <!-- Карточка 3 -->
+                <div class="product-card">
+                    <div class="product-card__sku">Артикул 001681</div>
+                    <h3 class="product-card__title">ВИНО TAMPESTA ROSADO</h3>
+                    <div class="product-card__subtitle">Испания, Розовое, Сухое, Кастилия и Леон, 0,75 л, 2023</div>
+                    <div class="product-card__price">2 970 ₽</div>
+                    <button class="product-card__btn">В корзину</button>
                 </div>
-                <div class="footer__col">
-                    <h4 class="footer__col-title">Контакты</h4>
-                    <ul class="footer__links">
-                        <li><a href="tel:+74951234567">+7 (495) 123-45-67</a></li>
-                        <li><a href="mailto:info@winewhisky.ru">info@winewhisky.ru</a></li>
-                    </ul>
+
+                <!-- Карточка 4 -->
+                <div class="product-card">
+                    <div class="product-card__sku">Артикул 002145</div>
+                    <h3 class="product-card__title">GLENMORANGIE ORIGINAL</h3>
+                    <div class="product-card__subtitle">Шотландия, Односолодовый виски, 0,7 л, 10 лет</div>
+                    <div class="product-card__price">5 490 ₽</div>
+                    <button class="product-card__btn">В корзину</button>
                 </div>
             </div>
-            <div class="footer__bottom">
-                <p>© 2025 Wine & Whisky. Все права защищены.</p>
-                <div class="footer__bottom-links">
-                    <a href="#">Политика конфиденциальности</a>
-                    <a href="#">Доставка и оплата</a>
+            
+            <div class="section-footer">
+                <a href="catalog.html" class="link-all">Смотреть все →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Скидки -->
+    <section class="discounts">
+        <div class="container">
+            <h2 class="section-title">Скидки</h2>
+            
+            <div class="products-grid">
+                <!-- Карточка со скидкой -->
+                <div class="product-card product-card--sale">
+                    <span class="product-card__badge">-15%</span>
+                    <div class="product-card__sku">Артикул 003456</div>
+                    <h3 class="product-card__title">CHÂTEAU MARGAUX</h3>
+                    <div class="product-card__subtitle">Франция, Красное, Сухое, Бордо, 0,75 л, 2018</div>
+                    <div class="product-card__price">
+                        <span class="old-price">24 990 ₽</span>
+                        <span class="new-price">21 240 ₽</span>
+                    </div>
+                    <button class="product-card__btn">В корзину</button>
+                </div>
+
+                <div class="product-card product-card--sale">
+                    <span class="product-card__badge">-10%</span>
+                    <div class="product-card__sku">Артикул 003457</div>
+                    <h3 class="product-card__title">MACALLAN 12 YO</h3>
+                    <div class="product-card__subtitle">Шотландия, Односолодовый виски, 0,7 л</div>
+                    <div class="product-card__price">
+                        <span class="old-price">12 990 ₽</span>
+                        <span class="new-price">11 690 ₽</span>
+                    </div>
+                    <button class="product-card__btn">В корзину</button>
                 </div>
             </div>
         </div>
-    </footer>
+    </section>
+</main>
 
-    <!-- Модальное окно проверки возраста -->
-    <div class="age-verification" id="ageVerification">
-        <div class="age-verification__overlay"></div>
-        <div class="age-verification__modal">
-            <div class="age-verification__content">
-                <div class="age-verification__icon">18+</div>
-                <h2 class="age-verification__title">Подтверждение возраста</h2>
-                <p class="age-verification__text">
-                    Для доступа на сайт необходимо подтвердить свое совершеннолетие и согласие на обработку файлов cookies.
-                </p>
-                <p class="age-verification__question">Вам уже есть 18 лет?</p>
-                <div class="age-verification__buttons">
-                    <button class="age-verification__btn age-verification__btn--yes" id="ageYes">Да, мне есть 18 лет</button>
-                    <button class="age-verification__btn age-verification__btn--no" id="ageNo">Нет, мне меньше 18</button>
-                </div>
-                <p class="age-verification__disclaimer">
-                    Нажимая "Да", вы подтверждаете, что вам есть 18 лет, и соглашаетесь с условиями использования сайта.
-                </p>
+<footer class="footer">
+    <div class="container">
+        <div class="footer__grid">
+            <div class="footer__col">
+                <h4 class="footer__col-title">Wine & Whisky</h4>
+                <ul class="footer__links">
+                    <li><a href="#">О нас</a></li>
+                    <li><a href="#">Блог</a></li>
+                    <li><a href="#">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4 class="footer__col-title">Каталог</h4>
+                <ul class="footer__links">
+                    <li><a href="#">Вино</a></li>
+                    <li><a href="#">Шампанское</a></li>
+                    <li><a href="#">Виски</a></li>
+                    <li><a href="#">Аксессуары</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4 class="footer__col-title">Помощь</h4>
+                <ul class="footer__links">
+                    <li><a href="#">Доставка</a></li>
+                    <li><a href="#">Оплата</a></li>
+                    <li><a href="#">Возврат</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4 class="footer__col-title">Контакты</h4>
+                <ul class="footer__links">
+                    <li><a href="tel:+74951234567">+7 (495) 123-45-67</a></li>
+                    <li><a href="mailto:info@winewhisky.ru">info@winewhisky.ru</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>© 2025 Wine & Whisky. Все права защищены.</p>
+            <div class="footer__bottom-links">
+                <a href="#">Политика конфиденциальности</a>
+                <a href="#">Доставка и оплата</a>
             </div>
         </div>
     </div>
+</footer>
 
-    <script>
-        // Проверка возраста - ИСПРАВЛЕННАЯ ВЕРСИЯ
-        (function() {
-            // Ждем полной загрузки DOM
-            document.addEventListener('DOMContentLoaded', function() {
-                console.log('Скрипт загружен');
-                
-                const ageVerification = document.getElementById('ageVerification');
-                const ageYes = document.getElementById('ageYes');
-                const ageNo = document.getElementById('ageNo');
-                
-                console.log('ageVerification найден:', !!ageVerification);
-                console.log('ageYes найден:', !!ageYes);
-                console.log('ageNo найден:', !!ageNo);
-                
-                if (!ageVerification || !ageYes || !ageNo) {
-                    console.error('Элементы не найдены!');
-                    return;
-                }
-                
-                // Проверяем, подтверждал ли пользователь возраст ранее
-                const ageConfirmed = localStorage.getItem('ageConfirmed');
-                console.log('ageConfirmed из localStorage:', ageConfirmed);
-                
-                if (ageConfirmed === 'true') {
-                    // Если уже подтверждал - скрываем окно
-                    console.log('Возраст уже подтвержден, скрываем окно');
-                    ageVerification.classList.add('hidden');
-                    document.body.style.overflow = '';
-                } else {
-                    // Показываем окно и блокируем прокрутку
-                    console.log('Показываем окно проверки возраста');
-                    ageVerification.classList.remove('hidden');
-                    document.body.style.overflow = 'hidden';
-                }
-                
-                // Обработка кнопки "Да"
-                ageYes.addEventListener('click', function(e) {
-                    console.log('Кнопка ДА нажата');
-                    e.preventDefault();
-                    localStorage.setItem('ageConfirmed', 'true');
-                    ageVerification.classList.add('hidden');
-                    document.body.style.overflow = '';
-                });
-                
-                // Обработка кнопки "Нет"
-                ageNo.addEventListener('click', function(e) {
-                    console.log('Кнопка НЕТ нажата');
-                    e.preventDefault();
-                    window.location.href = 'https://www.google.com';
-                });
-                
-                // Блокируем закрытие по ESC
-                document.addEventListener('keydown', function(e) {
-                    if (e.key === 'Escape' && !ageVerification.classList.contains('hidden')) {
-                        e.preventDefault();
-                    }
-                });
-                
-                // Блокируем клик по overlay
-                const overlay = document.querySelector('.age-verification__overlay');
-                if (overlay) {
-                    overlay.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                    });
-                }
-            });
-        })();
-    </script>
+<!-- Модальное окно проверки возраста -->
+<div class="age-verification" id="ageVerification">
+    <div class="age-verification__overlay"></div>
+    <div class="age-verification__modal">
+        <div class="age-verification__content">
+            <div class="age-verification__icon">🍷</div>
+            <h2 class="age-verification__title">Подтверждение возраста</h2>
+            <p class="age-verification__text">
+                Наш сайт содержит информацию о продукции, предназначенной для лиц, достигших совершеннолетия.
+            </p>
+            <p class="age-verification__question">Вам уже есть 18 лет?</p>
+            <div class="age-verification__buttons">
+                <button class="age-verification__btn age-verification__btn--yes" id="ageYes">Да, мне есть 18 лет</button>
+                <button class="age-verification__btn age-verification__btn--no" id="ageNo">Нет, мне меньше 18</button>
+            </div>
+            <p class="age-verification__disclaimer">
+                Нажимая "Да", вы подтверждаете, что вам есть 18 лет, и соглашаетесь с условиями использования сайта.
+            </p>
+        </div>
+    </div>
+</div>
 
-    <!-- Для отладки добавьте эту кнопку (временно) -->
-    <!-- <button onclick="localStorage.removeItem('ageConfirmed'); location.reload();" style="position:fixed; bottom:10px; left:10px; z-index:10000;">Сбросить проверку возраста</button> -->
-    
 <script>
-    // Выпадающее меню "Каталог"
+    // Проверка возраста
     document.addEventListener('DOMContentLoaded', function() {
-        const catalogLink = document.getElementById('catalogLink');
-        const catalogDropdown = document.getElementById('catalogDropdown');
+        const ageVerification = document.getElementById('ageVerification');
+        const ageYes = document.getElementById('ageYes');
+        const ageNo = document.getElementById('ageNo');
         
-        if (catalogLink && catalogDropdown) {
-            // При клике на "Каталог"
-            catalogLink.addEventListener('click', function(e) {
-                e.preventDefault(); // Не переходить по ссылке
-                
-                // Если меню открыто - закрыть, если закрыто - открыть
-                if (catalogDropdown.style.display === 'block') {
-                    catalogDropdown.style.display = 'none';
-                } else {
-                    catalogDropdown.style.display = 'block';
-                }
+        const ageConfirmed = localStorage.getItem('ageConfirmed');
+        
+        if (ageConfirmed === 'true') {
+            ageVerification.classList.add('hidden');
+        } else {
+            ageVerification.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        if (ageYes) {
+            ageYes.addEventListener('click', function() {
+                localStorage.setItem('ageConfirmed', 'true');
+                ageVerification.classList.add('hidden');
+                document.body.style.overflow = '';
             });
+        }
+        
+        if (ageNo) {
+            ageNo.addEventListener('click', function() {
+                window.location.href = 'https://www.google.com';
+            });
+        }
+    });
+    
+    // Слайдер
+    document.addEventListener('DOMContentLoaded', function() {
+        const track = document.getElementById('sliderTrack');
+        const slides = document.querySelectorAll('.slider-slide');
+        const prevBtn = document.getElementById('sliderPrev');
+        const nextBtn = document.getElementById('sliderNext');
+        const dots = document.querySelectorAll('.slider-dot');
+        
+        if (!track || slides.length === 0) return;
+        
+        let currentIndex = 0;
+        const slideCount = slides.length;
+        
+        function updateSlider() {
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
             
-            // При клике в любом месте страницы
-            document.addEventListener('click', function(e) {
-                // Если кликнули не по ссылке "Каталог" и не по меню
-                if (e.target !== catalogLink && !catalogDropdown.contains(e.target)) {
-                    catalogDropdown.style.display = 'none';
+            dots.forEach((dot, index) => {
+                if (index === currentIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
                 }
             });
         }
+        
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function() {
+                currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+                updateSlider();
+            });
+        }
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function() {
+                currentIndex = (currentIndex + 1) % slideCount;
+                updateSlider();
+            });
+        }
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', function() {
+                currentIndex = index;
+                updateSlider();
+            });
+        });
+        
+        // Автоматическое переключение каждые 5 секунд
+        setInterval(function() {
+            currentIndex = (currentIndex + 1) % slideCount;
+            updateSlider();
+        }, 5000);
     });
 </script>
 </body>
