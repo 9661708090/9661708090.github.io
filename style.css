@@ -291,7 +291,7 @@ body {
     color: var(--color-text);
     font-weight: 500;
     font-size: 0.95rem;
-    text-transform: uppercase;
+    text-transform: none;
     letter-spacing: 0.5px;
     transition: color 0.2s;
     white-space: nowrap;
