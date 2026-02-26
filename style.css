@@ -1,3 +1,32 @@
+/* Логотип-изображение */
+.logo--image {
+    display: flex;
+    align-items: center;
+    height: 60px; /* Высота под ваш хедер */
+}
+
+.logo__img {
+    width: auto;
+    height: 100%; /* Подстроится под высоту родителя */
+    max-width: 200px; /* Ограничение ширины при необходимости */
+    object-fit: contain;
+    display: block;
+}
+
+/* Адаптивность для логотипа */
+@media screen and (max-width: 768px) {
+    .logo--image {
+        height: 50px; /* Чуть меньше на мобильных */
+        justify-content: center;
+    }
+    
+    .logo__img {
+        max-width: 180px;
+    }
+}
+
+
+
 /* ===== ОБНУЛЕНИЕ И БАЗОВЫЕ НАСТРОЙКИ ===== */
 * {
     margin: 0;
