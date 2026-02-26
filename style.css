@@ -3,14 +3,15 @@
     padding: 60px 0;
 }
 
+/* Контейнер для кнопок - теперь фон только под ними */
 .tabs-nav {
-    display: flex;
+    display: inline-flex; /* Изменено с flex на inline-flex */
     gap: 10px;
     background: var(--color-bg-light);
     padding: 5px;
     border-radius: 40px;
     margin-bottom: 40px;
-    width: fit-content; /* Чтобы блок был только ширины кнопок */
+    /* width: fit-content; - убираем, inline-flex и так делает */
 }
 
 .tab-btn {
@@ -23,7 +24,6 @@
     cursor: pointer;
     transition: all 0.3s ease;
     border-radius: 30px;
-    position: relative;
 }
 
 .tab-btn:hover {
@@ -36,22 +36,30 @@
     box-shadow: 0 4px 12px rgba(139, 44, 44, 0.15);
 }
 
+/* Контейнер для карточек */
+.products-grid {
+    width: 100%;
+}
+
 .tab-content {
     display: none;
+    width: 100%;
 }
 
 .tab-content.active {
     display: block;
 }
 
+/* Сетка карточек - ровно 4 в ряд */
 .products-grid__inner {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr); /* 4 колонки */
     gap: 30px;
+    width: 100%;
     margin-bottom: 40px;
 }
 
-/* Убеждаемся, что карточки занимают всю ширину */
+/* Карточки занимают всю ширину ячейки */
 .product-card {
     width: 100%;
     background: var(--color-card-bg);
@@ -62,14 +70,22 @@
 }
 
 /* Адаптивность */
+@media screen and (max-width: 1200px) {
+    .products-grid__inner {
+        gap: 20px; /* Чуть меньше отступы */
+    }
+}
+
 @media screen and (max-width: 992px) {
     .products-grid__inner {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* 2 колонки на планшетах */
+        gap: 20px;
     }
 }
 
 @media screen and (max-width: 768px) {
     .tabs-nav {
+        display: flex; /* На мобильных возвращаем flex для центрирования */
         width: 100%;
         justify-content: center;
     }
@@ -77,7 +93,8 @@
 
 @media screen and (max-width: 480px) {
     .products-grid__inner {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* 1 колонка на телефонах */
+        gap: 15px;
     }
     
     .tab-btn {
@@ -85,7 +102,6 @@
         font-size: 0.85rem;
     }
 }
-
 
 
 /* ===== СЛАЙДЕР ===== */
