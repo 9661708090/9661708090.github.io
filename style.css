@@ -29,7 +29,7 @@
     display: block;
     position: relative;
     width: 100%;
-    height: 500px;
+    height: 350px; /* Фиксированная высота 350px */
     overflow: hidden;
     text-decoration: none;
     color: white;
@@ -38,12 +38,12 @@
 .slider-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Изображение покрывает всю область */
     transition: transform 0.3s ease;
 }
 
 .slider-link:hover .slider-image {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Легкое увеличение при наведении */
 }
 
 .slider-content {
@@ -51,46 +51,47 @@
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 60px 50px;
+    padding: 40px 50px; /* Уменьшенные отступы */
     background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
     color: white;
 }
 
 .slider-label {
     display: inline-block;
-    background: var(--color-accent-wine);
+    background: var(--color-accent-wine, #8B2C2C);
     color: white;
-    padding: 5px 15px;
+    padding: 4px 12px;
     border-radius: 30px;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 500;
     letter-spacing: 0.5px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     text-transform: uppercase;
 }
 
 .slider-title {
-    font-size: 2.8rem;
+    font-size: 2rem; /* Уменьшенный заголовок */
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     line-height: 1.2;
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .slider-subtitle {
-    font-size: 1.1rem;
+    font-size: 0.95rem; /* Уменьшенный подзаголовок */
     opacity: 0.9;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    max-width: 600px;
 }
 
 .slider-btn {
     display: inline-block;
-    padding: 12px 30px;
-    background: var(--color-accent-wine);
+    padding: 10px 25px; /* Уменьшенная кнопка */
+    background: var(--color-accent-wine, #8B2C2C);
     color: white;
     border-radius: 4px;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 500;
     transition: all 0.3s ease;
     text-decoration: none;
@@ -108,13 +109,13 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     background: rgba(255, 255, 255, 0.3);
     border: none;
     border-radius: 50%;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     cursor: pointer;
     z-index: 10;
     transition: all 0.3s ease;
@@ -130,27 +131,27 @@
 }
 
 .slider-arrow--prev {
-    left: 20px;
+    left: 15px;
 }
 
 .slider-arrow--next {
-    right: 20px;
+    right: 15px;
 }
 
 /* Индикаторы слайдов */
 .slider-dots {
     position: absolute;
-    bottom: 20px;
+    bottom: 15px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 10px;
+    gap: 8px;
     z-index: 10;
 }
 
 .slider-dot {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     background: rgba(255, 255, 255, 0.5);
     border-radius: 50%;
     cursor: pointer;
@@ -160,68 +161,101 @@
 .slider-dot.active {
     background: white;
     transform: scale(1.2);
+    width: 12px;
+    height: 12px;
 }
 
 .slider-dot:hover {
     background: white;
 }
 
-/* Адаптивность для слайдера */
+/* Адаптивность для разных экранов */
 @media screen and (max-width: 992px) {
     .slider-link {
-        height: 400px;
+        height: 320px; /* Чуть меньше на планшетах */
     }
     
     .slider-content {
-        padding: 40px 30px;
-    }
-    
-    .slider-title {
-        font-size: 2.2rem;
-    }
-    
-    .slider-subtitle {
-        font-size: 1rem;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .slider-link {
-        height: 350px;
-    }
-    
-    .slider-content {
-        padding: 30px 20px;
+        padding: 30px 40px;
     }
     
     .slider-title {
         font-size: 1.8rem;
     }
     
+    .slider-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 12px;
+    }
+    
+    .slider-btn {
+        padding: 8px 22px;
+        font-size: 0.85rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .slider-link {
+        height: 280px; /* Ещё меньше */
+    }
+    
+    .slider-content {
+        padding: 25px 30px;
+    }
+    
+    .slider-title {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+    }
+    
+    .slider-subtitle {
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+    }
+    
     .slider-arrow {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
+        width: 35px;
+        height: 35px;
+        font-size: 1.1rem;
     }
 }
 
 @media screen and (max-width: 480px) {
     .slider-link {
-        height: 300px;
+        height: 250px; /* Компактно на телефонах */
+    }
+    
+    .slider-content {
+        padding: 20px;
+    }
+    
+    .slider-label {
+        font-size: 0.7rem;
+        padding: 3px 8px;
     }
     
     .slider-title {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
+    }
+    
+    .slider-subtitle {
+        font-size: 0.75rem;
+        margin-bottom: 8px;
     }
     
     .slider-btn {
-        padding: 8px 20px;
-        font-size: 0.9rem;
+        padding: 6px 15px;
+        font-size: 0.75rem;
     }
     
     .slider-dot {
         width: 8px;
         height: 8px;
+    }
+    
+    .slider-dot.active {
+        width: 10px;
+        height: 10px;
     }
 }
 
