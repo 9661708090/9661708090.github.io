@@ -175,18 +175,14 @@
     <!-- Каталог с табами -->
     <section class="featured-catalog">
         <div class="container">
-            <!-- Заголовок и табы -->
-            <div class="catalog-tabs">
-                <h2 class="section-title">Рекомендуем</h2>
-                
-                <div class="tabs-nav">
-                    <button class="tab-btn active" data-tab="popular">Популярное</button>
-                    <button class="tab-btn" data-tab="rating">Высокий рейтинг</button>
-                    <button class="tab-btn" data-tab="sale">Скидки</button>
-                </div>
+            <!-- Только кнопки-табы (без заголовка) -->
+            <div class="tabs-nav">
+                <button class="tab-btn active" data-tab="popular">Популярное</button>
+                <button class="tab-btn" data-tab="rating">Высокий рейтинг</button>
+                <button class="tab-btn" data-tab="sale">Скидки</button>
             </div>
             
-            <!-- Контейнер для товаров (8 карточек) -->
+            <!-- Контейнер для товаров -->
             <div class="products-grid" id="productsContainer">
                 <!-- Популярное (активный таб по умолчанию) -->
                 <div class="tab-content active" id="tab-popular">
@@ -276,7 +272,7 @@
                 <!-- Высокий рейтинг (скрыт по умолчанию) -->
                 <div class="tab-content" id="tab-rating">
                     <div class="products-grid__inner">
-                        <!-- Карточки с высоким рейтингом -->
+                        <!-- Карточки с высоким рейтингом - 8 штук -->
                         <div class="product-card">
                             <div class="product-card__sku">Артикул 004001</div>
                             <h3 class="product-card__title">DOM PÉRIGNON 2012</h3>
@@ -354,7 +350,7 @@
                 <!-- Скидки (скрыт по умолчанию) -->
                 <div class="tab-content" id="tab-sale">
                     <div class="products-grid__inner">
-                        <!-- Карточки со скидками -->
+                        <!-- Карточки со скидками - 8 штук -->
                         <div class="product-card product-card--sale">
                             <span class="product-card__badge">-20%</span>
                             <div class="product-card__sku">Артикул 005001</div>
