@@ -12,7 +12,7 @@
         <!-- Верхняя строка: логотип, поиск, телефон, иконки -->
         <div class="header__top">
             <a href="index.html" class="logo logo--image">
-                <img src="images/logo.jpg" alt="Wine & Whisky" class="logo__img">
+                <img src="logo.png" alt="Wine & Whisky" class="logo__img">
             </a>
             
             <!-- Поле поиска -->
@@ -89,85 +89,87 @@
 <main class="main">
     <!-- Динамический баннер-слайдер -->
     <section class="hero-slider">
-        <div class="slider-container">
-            <div class="slider-track" id="sliderTrack">
-                <!-- Слайд 1 -->
-                <div class="slider-slide">
-                    <a href="catalog.html?category=champagne" class="slider-link">
-                        <img src="images/slide1.jpg" alt="Шампанское" class="slider-image">
-                        <div class="slider-content">
-                            <span class="slider-label">Коллекция</span>
-                            <h2 class="slider-title">Игристое настроение</h2>
-                            <p class="slider-subtitle">Шампанское и игристые вина для особых моментов</p>
-                            <span class="slider-btn">Смотреть подборку →</span>
-                        </div>
-                    </a>
+        <div class="container">
+            <div class="slider-container">
+                <div class="slider-track" id="sliderTrack">
+                    <!-- Слайд 1 -->
+                    <div class="slider-slide">
+                        <a href="catalog.html?category=champagne" class="slider-link">
+                            <img src="images/slide1.jpg" alt="Шампанское" class="slider-image">
+                            <div class="slider-content">
+                                <span class="slider-label">Коллекция</span>
+                                <h2 class="slider-title">Игристое настроение</h2>
+                                <p class="slider-subtitle">Шампанское и игристые вина для особых моментов</p>
+                                <span class="slider-btn">Смотреть подборку →</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Слайд 2 -->
+                    <div class="slider-slide">
+                        <a href="catalog.html?category=wine&country=france" class="slider-link">
+                            <img src="images/slide2.jpg" alt="Французское вино" class="slider-image">
+                            <div class="slider-content">
+                                <span class="slider-label">Винный гид</span>
+                                <h2 class="slider-title">Французская элегантность</h2>
+                                <p class="slider-subtitle">Бордо, Бургундия, Долина Луары — лучшие аппелласьоны</p>
+                                <span class="slider-btn">Выбрать вино →</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Слайд 3 -->
+                    <div class="slider-slide">
+                        <a href="catalog.html?category=spirits&type=whisky" class="slider-link">
+                            <img src="images/slide3.jpg" alt="Виски" class="slider-image">
+                            <div class="slider-content">
+                                <span class="slider-label">Коллекция</span>
+                                <h2 class="slider-title">Односолодовый виски</h2>
+                                <p class="slider-subtitle">Шотландия, Ирландия, Япония — легендарные бочки</p>
+                                <span class="slider-btn">Изучить виски →</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Слайд 4 -->
+                    <div class="slider-slide">
+                        <a href="catalog.html?category=wine&region=italy" class="slider-link">
+                            <img src="images/slide4.jpg" alt="Итальянское вино" class="slider-image">
+                            <div class="slider-content">
+                                <span class="slider-label">Винный гид</span>
+                                <h2 class="slider-title">Итальянская страсть</h2>
+                                <p class="slider-subtitle">Тоскана, Пьемонт, Венето — вина с характером</p>
+                                <span class="slider-btn">Открыть Италию →</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Слайд 5 -->
+                    <div class="slider-slide">
+                        <a href="catalog.html?category=sale" class="slider-link">
+                            <img src="images/slide5.jpg" alt="Акции" class="slider-image">
+                            <div class="slider-content">
+                                <span class="slider-label">Специальное предложение</span>
+                                <h2 class="slider-title">Винная неделя</h2>
+                                <p class="slider-subtitle">Скидки до 25% на избранные позиции</p>
+                                <span class="slider-btn">Все акции →</span>
+                            </div>
+                        </a>
+                    </div>
                 </div>
                 
-                <!-- Слайд 2 -->
-                <div class="slider-slide">
-                    <a href="catalog.html?category=wine&country=france" class="slider-link">
-                        <img src="images/slide2.jpg" alt="Французское вино" class="slider-image">
-                        <div class="slider-content">
-                            <span class="slider-label">Винный гид</span>
-                            <h2 class="slider-title">Французская элегантность</h2>
-                            <p class="slider-subtitle">Бордо, Бургундия, Долина Луары — лучшие аппелласьоны</p>
-                            <span class="slider-btn">Выбрать вино →</span>
-                        </div>
-                    </a>
-                </div>
+                <!-- Кнопки навигации слайдера (в старом стиле) -->
+                <button class="slider-arrow slider-arrow--prev" id="sliderPrev">←</button>
+                <button class="slider-arrow slider-arrow--next" id="sliderNext">→</button>
                 
-                <!-- Слайд 3 -->
-                <div class="slider-slide">
-                    <a href="catalog.html?category=spirits&type=whisky" class="slider-link">
-                        <img src="images/slide3.jpg" alt="Виски" class="slider-image">
-                        <div class="slider-content">
-                            <span class="slider-label">Коллекция</span>
-                            <h2 class="slider-title">Односолодовый виски</h2>
-                            <p class="slider-subtitle">Шотландия, Ирландия, Япония — легендарные бочки</p>
-                            <span class="slider-btn">Изучить виски →</span>
-                        </div>
-                    </a>
+                <!-- Индикаторы слайдов -->
+                <div class="slider-dots" id="sliderDots">
+                    <span class="slider-dot active"></span>
+                    <span class="slider-dot"></span>
+                    <span class="slider-dot"></span>
+                    <span class="slider-dot"></span>
+                    <span class="slider-dot"></span>
                 </div>
-                
-                <!-- Слайд 4 -->
-                <div class="slider-slide">
-                    <a href="catalog.html?category=wine&region=italy" class="slider-link">
-                        <img src="images/slide4.jpg" alt="Итальянское вино" class="slider-image">
-                        <div class="slider-content">
-                            <span class="slider-label">Винный гид</span>
-                            <h2 class="slider-title">Итальянская страсть</h2>
-                            <p class="slider-subtitle">Тоскана, Пьемонт, Венето — вина с характером</p>
-                            <span class="slider-btn">Открыть Италию →</span>
-                        </div>
-                    </a>
-                </div>
-                
-                <!-- Слайд 5 -->
-                <div class="slider-slide">
-                    <a href="catalog.html?category=sale" class="slider-link">
-                        <img src="images/slide5.jpg" alt="Акции" class="slider-image">
-                        <div class="slider-content">
-                            <span class="slider-label">Специальное предложение</span>
-                            <h2 class="slider-title">Винная неделя</h2>
-                            <p class="slider-subtitle">Скидки до 25% на избранные позиции</p>
-                            <span class="slider-btn">Все акции →</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Кнопки навигации слайдера -->
-            <button class="slider-arrow slider-arrow--prev" id="sliderPrev">←</button>
-            <button class="slider-arrow slider-arrow--next" id="sliderNext">→</button>
-            
-            <!-- Индикаторы слайдов -->
-            <div class="slider-dots" id="sliderDots">
-                <span class="slider-dot active"></span>
-                <span class="slider-dot"></span>
-                <span class="slider-dot"></span>
-                <span class="slider-dot"></span>
-                <span class="slider-dot"></span>
             </div>
         </div>
     </section>
@@ -304,7 +306,7 @@
                 <!-- Высокий рейтинг (скрыт по умолчанию) -->
                 <div class="tab-content" id="tab-rating">
                     <div class="products-grid__inner">
-                        <!-- Карточка 1 -->
+                        <!-- Карточки с высоким рейтингом -->
                         <div class="product-card">
                             <div class="product-card__image">
                                 <img src="images/bottle-9.png" alt="Dom Pérignon" class="product-card__img">
@@ -318,7 +320,6 @@
                             <button class="product-card__btn">В корзину</button>
                         </div>
                         
-                        <!-- Карточка 2 -->
                         <div class="product-card">
                             <div class="product-card__image">
                                 <img src="images/bottle-10.png" alt="Macallan 18" class="product-card__img">
@@ -332,7 +333,6 @@
                             <button class="product-card__btn">В корзину</button>
                         </div>
                         
-                        <!-- Карточка 3 -->
                         <div class="product-card">
                             <div class="product-card__image">
                                 <img src="images/bottle-11.png" alt="Vega Sicilia" class="product-card__img">
@@ -346,7 +346,6 @@
                             <button class="product-card__btn">В корзину</button>
                         </div>
                         
-                        <!-- Карточка 4 -->
                         <div class="product-card">
                             <div class="product-card__image">
                                 <img src="images/bottle-12.png" alt="Krug" class="product-card__img">
@@ -360,7 +359,6 @@
                             <button class="product-card__btn">В корзину</button>
                         </div>
                         
-                        <!-- Карточка 5 -->
                         <div class="product-card">
                             <div class="product-card__image">
                                 <img src="images/bottle-13.png" alt="Yamazaki" class="product-card__img">
@@ -374,7 +372,6 @@
                             <button class="product-card__btn">В корзину</button>
                         </div>
                         
-                        <!-- Карточка 6 -->
                         <div class="product-card">
                             <div class="product-card__image">
                                 <img src="images/bottle-14.png" alt="Lafite" class="product-card__img">
@@ -388,7 +385,6 @@
                             <button class="product-card__btn">В корзину</button>
                         </div>
                         
-                        <!-- Карточка 7 -->
                         <div class="product-card">
                             <div class="product-card__image">
                                 <img src="images/bottle-15.png" alt="Hennessy" class="product-card__img">
@@ -402,7 +398,6 @@
                             <button class="product-card__btn">В корзину</button>
                         </div>
                         
-                        <!-- Карточка 8 -->
                         <div class="product-card">
                             <div class="product-card__image">
                                 <img src="images/bottle-16.png" alt="Opus One" class="product-card__img">
@@ -421,7 +416,7 @@
                 <!-- Скидки (скрыт по умолчанию) -->
                 <div class="tab-content" id="tab-sale">
                     <div class="products-grid__inner">
-                        <!-- Карточка 1 -->
+                        <!-- Карточки со скидками -->
                         <div class="product-card product-card--sale">
                             <span class="product-card__badge">-20%</span>
                             <div class="product-card__image">
@@ -438,7 +433,6 @@
                             <button class="product-card__btn">В корзину</button>
                         </div>
 
-                        <!-- Карточка 2 -->
                         <div class="product-card product-card--sale">
                             <span class="product-card__badge">-15%</span>
                             <div class="product-card__image">
@@ -455,7 +449,6 @@
                             <button class="product-card__btn">В корзину</button>
                         </div>
                         
-                        <!-- Карточка 3 -->
                         <div class="product-card product-card--sale">
                             <span class="product-card__badge">-25%</span>
                             <div class="product-card__image">
@@ -472,7 +465,6 @@
                             <button class="product-card__btn">В корзину</button>
                         </div>
                         
-                        <!-- Карточка 4 -->
                         <div class="product-card product-card--sale">
                             <span class="product-card__badge">-10%</span>
                             <div class="product-card__image">
@@ -489,7 +481,6 @@
                             <button class="product-card__btn">В корзину</button>
                         </div>
                         
-                        <!-- Карточка 5 -->
                         <div class="product-card product-card--sale">
                             <span class="product-card__badge">-30%</span>
                             <div class="product-card__image">
@@ -506,7 +497,6 @@
                             <button class="product-card__btn">В корзину</button>
                         </div>
                         
-                        <!-- Карточка 6 -->
                         <div class="product-card product-card--sale">
                             <span class="product-card__badge">-15%</span>
                             <div class="product-card__image">
@@ -523,7 +513,6 @@
                             <button class="product-card__btn">В корзину</button>
                         </div>
                         
-                        <!-- Карточка 7 -->
                         <div class="product-card product-card--sale">
                             <span class="product-card__badge">-20%</span>
                             <div class="product-card__image">
@@ -540,7 +529,6 @@
                             <button class="product-card__btn">В корзину</button>
                         </div>
                         
-                        <!-- Карточка 8 -->
                         <div class="product-card product-card--sale">
                             <span class="product-card__badge">-10%</span>
                             <div class="product-card__image">
@@ -719,67 +707,7 @@
             updateSlider();
         }, 5000);
     });
-
-    // Добавить свайп для мобильных
-if (window.innerWidth <= 768) {
-    let touchStartX = 0;
-    let touchEndX = 0;
     
-    const sliderContainer = document.querySelector('.slider-container');
-    
-    sliderContainer.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-    }, {passive: true});
-    
-    sliderContainer.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    }, {passive: true});
-    
-    function handleSwipe() {
-        const swipeThreshold = 50;
-        const diff = touchEndX - touchStartX;
-        
-        if (Math.abs(diff) > swipeThreshold) {
-            if (diff > 0) {
-                // Свайп вправо - предыдущий слайд
-                document.getElementById('sliderPrev')?.click();
-            } else {
-                // Свайп влево - следующий слайд
-                document.getElementById('sliderNext')?.click();
-            }
-        }
-    }
-}
-    
-    // Переключение табов в каталоге
-    document.addEventListener('DOMContentLoaded', function() {
-        const tabButtons = document.querySelectorAll('.tab-btn');
-        const tabContents = document.querySelectorAll('.tab-content');
-        
-        tabButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                // Убираем активный класс у всех кнопок
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                
-                // Добавляем активный класс текущей кнопке
-                this.classList.add('active');
-                
-                // Получаем id таба
-                const tabId = this.getAttribute('data-tab');
-                
-                // Скрываем все табы
-                tabContents.forEach(content => content.classList.remove('active'));
-                
-                // Показываем нужный таб
-                const activeTab = document.getElementById(`tab-${tabId}`);
-                if (activeTab) {
-                    activeTab.classList.add('active');
-                }
-            });
-        });
-    });
-
     // Выпадающее меню - исправленная версия
     document.addEventListener('DOMContentLoaded', function() {
         const catalogLink = document.getElementById('catalogLink');
@@ -819,7 +747,35 @@ if (window.innerWidth <= 768) {
                 }
             });
         }
-    });  
+    });
+    
+    // Переключение табов в каталоге
+    document.addEventListener('DOMContentLoaded', function() {
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Убираем активный класс у всех кнопок
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Добавляем активный класс текущей кнопке
+                this.classList.add('active');
+                
+                // Получаем id таба
+                const tabId = this.getAttribute('data-tab');
+                
+                // Скрываем все табы
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Показываем нужный таб
+                const activeTab = document.getElementById(`tab-${tabId}`);
+                if (activeTab) {
+                    activeTab.classList.add('active');
+                }
+            });
+        });
+    });
 </script>
 </body>
 </html>
