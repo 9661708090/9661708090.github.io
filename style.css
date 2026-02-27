@@ -399,7 +399,7 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Стрелки слайдера */
+/* Стрелки слайдера - в правом нижнем углу */
 .slider-arrow {
     position: absolute;
     width: 44px;
@@ -421,11 +421,11 @@ body {
 }
 
 .slider-arrow--prev {
-    right: 80px; /* Левая стрелка правее */
+    right: 80px;
 }
 
 .slider-arrow--next {
-    right: 20px; /* Правая стрелка */
+    right: 20px;
 }
 
 .slider-arrow:hover {
@@ -436,7 +436,7 @@ body {
 /* Индикаторы слайдов */
 .slider-dots {
     position: absolute;
-    bottom: 20px;
+    bottom: 35px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -460,70 +460,6 @@ body {
 
 .slider-dot:hover {
     background: white;
-}
-
-/* Адаптивность */
-@media screen and (max-width: 992px) {
-    .slider-link {
-        height: 300px;
-    }
-    
-    .slider-content {
-        padding: 30px 40px;
-    }
-    
-    .slider-title {
-        font-size: 1.8rem;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .slider-link {
-        height: 250px;
-    }
-    
-    .slider-content {
-        padding: 20px 30px;
-    }
-    
-    .slider-title {
-        font-size: 1.5rem;
-    }
-    
-    .slider-arrow {
-        width: 36px;
-        height: 36px;
-        font-size: 1.2rem;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .slider-link {
-        height: 200px;
-    }
-    
-    .slider-content {
-        padding: 15px 20px;
-    }
-    
-    .slider-label {
-        font-size: 0.7rem;
-        padding: 3px 8px;
-    }
-    
-    .slider-title {
-        font-size: 1.2rem;
-    }
-    
-    .slider-subtitle {
-        font-size: 0.75rem;
-        margin-bottom: 10px;
-    }
-    
-    .slider-btn {
-        padding: 6px 12px;
-        font-size: 0.75rem;
-    }
 }
 
 /* ===== КАТАЛОГ С ТАБАМИ ===== */
@@ -998,15 +934,16 @@ body {
         min-width: 260px;
     }
     
-    .featured-banner__container {
-        flex-direction: column;
-        text-align: center;
-        gap: 40px;
-        padding: 60px 40px;
+    .slider-link {
+        height: 300px;
     }
     
-    .featured-banner__title {
-        font-size: 2.2rem;
+    .slider-content {
+        padding: 30px 40px;
+    }
+    
+    .slider-title {
+        font-size: 1.8rem;
     }
 }
 
@@ -1055,8 +992,6 @@ body {
     
     .slider-container {
         border-radius: 15px;
-        width: 100%;
-        margin: 0 auto;
     }
     
     .slider-link {
@@ -1064,31 +999,41 @@ body {
     }
     
     .slider-content {
-        padding: 20px;
+        padding: 20px 30px;
     }
     
     .slider-title {
-        font-size: 1.3rem;
-        margin-bottom: 5px;
+        font-size: 1.5rem;
     }
     
     .slider-subtitle {
-        font-size: 0.8rem;
-        margin-bottom: 10px;
+        font-size: 0.85rem;
     }
     
     .slider-btn {
-        padding: 6px 15px;
-        font-size: 0.75rem;
+        padding: 8px 20px;
+        font-size: 0.85rem;
     }
     
-    /* Прячем стрелки на мобильных */
+    /* Стрелки на мобильных */
     .slider-arrow {
-        display: none;
+        width: 36px;
+        height: 36px;
+        font-size: 1.2rem;
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .slider-arrow--prev {
+        right: 65px;
+    }
+    
+    .slider-arrow--next {
+        right: 15px;
     }
     
     .slider-dots {
-        bottom: 15px;
+        bottom: 30px;
     }
     
     .slider-dot {
@@ -1120,19 +1065,6 @@ body {
     .tab-btn {
         padding: 8px 16px;
         font-size: 0.9rem;
-    }
-    
-    .featured-banner .container {
-        padding: 0 15px;
-    }
-    
-    .featured-banner__container {
-        padding: 50px 30px;
-        border-radius: 20px;
-    }
-    
-    .featured-banner__title {
-        font-size: 2rem;
     }
     
     .footer__grid {
@@ -1172,6 +1104,57 @@ body {
     
     .slider-link {
         height: 200px;
+    }
+    
+    .slider-content {
+        padding: 15px 20px;
+    }
+    
+    .slider-label {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+        margin-bottom: 5px;
+    }
+    
+    .slider-title {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+    }
+    
+    .slider-subtitle {
+        font-size: 0.75rem;
+        margin-bottom: 8px;
+    }
+    
+    .slider-btn {
+        padding: 6px 12px;
+        font-size: 0.7rem;
+    }
+    
+    /* Стрелки на маленьких экранах */
+    .slider-arrow {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    .slider-arrow--prev {
+        right: 55px;
+    }
+    
+    .slider-arrow--next {
+        right: 10px;
+    }
+    
+    .slider-dots {
+        bottom: 25px;
+    }
+    
+    .slider-dot {
+        width: 6px;
+        height: 6px;
     }
     
     .header__icons {
@@ -1233,23 +1216,6 @@ body {
     .tab-btn {
         padding: 6px 12px;
         font-size: 0.8rem;
-    }
-    
-    .catalog__title {
-        font-size: 1.6rem;
-    }
-    
-    .featured-banner__container {
-        padding: 40px 20px;
-        border-radius: 16px;
-    }
-    
-    .featured-banner__title {
-        font-size: 1.8rem;
-    }
-    
-    .featured-banner__btn {
-        width: 100%;
     }
     
     .footer__grid {
