@@ -402,13 +402,13 @@ body {
 /* Стрелки слайдера - для ПК */
 .slider-arrow {
     position: absolute;
-    width: 44px;
-    height: 44px;
-    background: rgba(0, 0, 0, 0.5);
-    border: none;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     cursor: pointer;
     z-index: 10;
     transition: all 0.3s ease;
@@ -416,21 +416,21 @@ body {
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(2px);
-    bottom: 20px;
-    right: 20px;
+    bottom: 15px;
+    right: 15px;
 }
 
 .slider-arrow--prev {
-    right: 80px; /* Левая стрелка правее */
+    right: 70px;
 }
 
 .slider-arrow--next {
-    right: 20px; /* Правая стрелка */
+    right: 15px;
 }
 
 .slider-arrow:hover {
     background: var(--color-accent-wine);
-    transform: scale(1.05);
+    border-color: transparent;
 }
 
 /* Индикаторы слайдов */
