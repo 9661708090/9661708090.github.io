@@ -399,44 +399,44 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Стрелки слайдера - для ПК */
+/* Стрелки слайдера */
 .slider-arrow {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
     border-radius: 50%;
     color: white;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     cursor: pointer;
     z-index: 10;
     transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
     display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(2px);
-    bottom: 15px;
-    right: 15px;
-}
-
-.slider-arrow--prev {
-    right: 70px;
-}
-
-.slider-arrow--next {
-    right: 15px;
 }
 
 .slider-arrow:hover {
-    background: var(--color-accent-wine);
-    border-color: transparent;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.slider-arrow--prev {
+    left: 20px;
+}
+
+.slider-arrow--next {
+    right: 20px;
 }
 
 /* Индикаторы слайдов */
 .slider-dots {
     position: absolute;
-    bottom: 35px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -456,12 +456,74 @@ body {
 .slider-dot.active {
     background: white;
     transform: scale(1.2);
-    width: 12px;
-    height: 12px;
 }
 
 .slider-dot:hover {
     background: white;
+}
+
+/* Адаптивность */
+@media screen and (max-width: 992px) {
+    .slider-link {
+        height: 300px;
+    }
+    
+    .slider-content {
+        padding: 30px 40px;
+    }
+    
+    .slider-title {
+        font-size: 1.8rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .slider-link {
+        height: 250px;
+    }
+    
+    .slider-content {
+        padding: 20px 30px;
+    }
+    
+    .slider-title {
+        font-size: 1.5rem;
+    }
+    
+    .slider-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .slider-link {
+        height: 200px;
+    }
+    
+    .slider-content {
+        padding: 15px 20px;
+    }
+    
+    .slider-label {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+    }
+    
+    .slider-title {
+        font-size: 1.2rem;
+    }
+    
+    .slider-subtitle {
+        font-size: 0.75rem;
+        margin-bottom: 10px;
+    }
+    
+    .slider-btn {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
 }
 
 /* ===== КАТАЛОГ С ТАБАМИ ===== */
