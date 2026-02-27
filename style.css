@@ -402,8 +402,6 @@ body {
 /* Стрелки слайдера */
 .slider-arrow {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
     width: 44px;
     height: 44px;
     background: rgba(255, 255, 255, 0.3);
@@ -418,19 +416,21 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    bottom: 20px;
+    right: 20px;
+}
+
+.slider-arrow--prev {
+    right: 80px; /* Левая стрелка правее */
+}
+
+.slider-arrow--next {
+    right: 20px; /* Правая стрелка */
 }
 
 .slider-arrow:hover {
     background: rgba(255, 255, 255, 0.5);
-    transform: translateY(-50%) scale(1.1);
-}
-
-.slider-arrow--prev {
-    left: 20px;
-}
-
-.slider-arrow--next {
-    right: 20px;
+    transform: scale(1.1);
 }
 
 /* Индикаторы слайдов */
