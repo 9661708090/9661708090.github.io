@@ -426,6 +426,7 @@ body {
 .slider-arrow::before {
     display: block;
     line-height: 1;
+    transform: translateY(-1px);
 }
 
 .slider-arrow--prev {
@@ -438,10 +439,12 @@ body {
 
 .slider-arrow--prev::before {
     content: "❮";
+    transform: translateY(-1px);
 }
 
 .slider-arrow--next::before {
     content: "❯";
+    transform: translateY(-1px);
 }
 
 .slider-arrow:hover {
