@@ -747,6 +747,47 @@
             });
         });
     });
+
+    // Выпадающее меню - исправленная версия
+    document.addEventListener('DOMContentLoaded', function() {
+        const catalogLink = document.getElementById('catalogLink');
+        const catalogDropdown = document.getElementById('catalogDropdown');
+        
+        if (catalogLink && catalogDropdown) {
+            // Клик по "Каталог"
+            catalogLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Переключаем меню
+                if (catalogDropdown.classList.contains('show')) {
+                    catalogDropdown.classList.remove('show');
+                } else {
+                    catalogDropdown.classList.add('show');
+                }
+            });
+            
+            // Клик в любом месте страницы
+            document.addEventListener('click', function(e) {
+                // Если кликнули не по ссылке и не по меню
+                if (!catalogLink.contains(e.target) && !catalogDropdown.contains(e.target)) {
+                    catalogDropdown.classList.remove('show');
+                }
+            });
+            
+            // Предотвращаем закрытие при клике внутри меню
+            catalogDropdown.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+            
+            // Закрытие по ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && catalogDropdown.classList.contains('show')) {
+                    catalogDropdown.classList.remove('show');
+                }
+            });
+        }
+    });  
 </script>
 </body>
 </html>
