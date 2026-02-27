@@ -404,34 +404,33 @@ body {
     position: absolute;
     width: 44px;
     height: 44px;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(0, 0, 0, 0.5);
     border: none;
     border-radius: 50%;
-    color: var(--color-text);
-    font-size: 1.3rem;
+    color: white;
+    font-size: 1.5rem;
     cursor: pointer;
     z-index: 10;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(2px);
     bottom: 20px;
     right: 20px;
 }
 
 .slider-arrow--prev {
-    right: 80px;
+    right: 80px; /* Левая стрелка правее */
 }
 
 .slider-arrow--next {
-    right: 20px;
+    right: 20px; /* Правая стрелка */
 }
 
 .slider-arrow:hover {
-    background: white;
-    transform: scale(1.1);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    background: var(--color-accent-wine);
+    transform: scale(1.05);
 }
 
 /* Индикаторы слайдов */
