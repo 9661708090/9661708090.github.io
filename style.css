@@ -399,7 +399,7 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Стрелки слайдера - в правом нижнем углу */
+/* Стрелки слайдера - с псевдоэлементами */
 .slider-arrow {
     position: absolute;
     width: 44px;
@@ -408,7 +408,7 @@ body {
     border: none;
     border-radius: 50%;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     cursor: pointer;
     z-index: 10;
     transition: all 0.3s ease;
@@ -423,6 +423,11 @@ body {
     right: 20px;
 }
 
+.slider-arrow::before {
+    display: block;
+    line-height: 1;
+}
+
 .slider-arrow--prev {
     right: 80px;
 }
@@ -431,8 +436,16 @@ body {
     right: 20px;
 }
 
+.slider-arrow--prev::before {
+    content: "❮";
+}
+
+.slider-arrow--next::before {
+    content: "❯";
+}
+
 .slider-arrow:hover {
-    background: #6e2323; /* Такой же оттенок при наведении, как у кнопки */
+    background: #6e2323;
     transform: scale(1.1);
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
 }
@@ -464,6 +477,114 @@ body {
 
 .slider-dot:hover {
     background: white;
+}
+
+/* Адаптивность слайдера */
+@media screen and (max-width: 992px) {
+    .slider-link {
+        height: 300px;
+    }
+    
+    .slider-content {
+        padding: 30px 40px;
+    }
+    
+    .slider-title {
+        font-size: 1.8rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .slider-link {
+        height: 250px;
+    }
+    
+    .slider-content {
+        padding: 20px 30px;
+    }
+    
+    .slider-title {
+        font-size: 1.5rem;
+    }
+    
+    .slider-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 1.5rem;
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .slider-arrow--prev {
+        right: 65px;
+    }
+    
+    .slider-arrow--next {
+        right: 15px;
+    }
+    
+    .slider-dots {
+        bottom: 30px;
+    }
+    
+    .slider-dot {
+        width: 8px;
+        height: 8px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .slider-link {
+        height: 200px;
+    }
+    
+    .slider-content {
+        padding: 15px 20px;
+    }
+    
+    .slider-label {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+    }
+    
+    .slider-title {
+        font-size: 1.2rem;
+    }
+    
+    .slider-subtitle {
+        font-size: 0.75rem;
+        margin-bottom: 10px;
+    }
+    
+    .slider-btn {
+        padding: 6px 12px;
+        font-size: 0.7rem;
+    }
+    
+    .slider-arrow {
+        width: 32px;
+        height: 32px;
+        font-size: 1.3rem;
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    .slider-arrow--prev {
+        right: 55px;
+    }
+    
+    .slider-arrow--next {
+        right: 10px;
+    }
+    
+    .slider-dots {
+        bottom: 25px;
+    }
+    
+    .slider-dot {
+        width: 6px;
+        height: 6px;
+    }
 }
 
 /* ===== КАТАЛОГ С ТАБАМИ ===== */
