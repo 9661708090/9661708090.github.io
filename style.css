@@ -343,7 +343,7 @@ body {
 
 .slider-content {
     position: absolute;
-    bottom: 0;
+    bottom: -30px;
     left: 0;
     right: 0;
     padding: 40px 50px;
